@@ -27,7 +27,6 @@ const HomePage = () => {
       discount: "-10%",
       img: "https://tse1.mm.bing.net/th?id=OIP.OUfLKAeiGxUfLE-BszuU0wHaE8&pid=Api&P=0&h=220"
     },
-   
     { 
       name: "Headphones", 
       discount: "-25%",
@@ -53,7 +52,7 @@ const HomePage = () => {
         { name: "Chairs",price: "From USD 140", img: "https://tse2.mm.bing.net/th?id=OIP.s-ejrNusut6iszl305qcBwHaHa&pid=Api&P=0&h=220" },
         { name: "Kitchen mixer",price: "From USD 40", img: "https://tse3.mm.bing.net/th?id=OIP.Wt5Kz_3EYoywb8x8oI0S2QHaHa&pid=Api&P=0&h=220" },
         { name: "Coffee maker",price: "From USD 340", img: "https://tse3.mm.bing.net/th?id=OIP.5AapZtzO4HbAKp1VPStLGQHaHa&pid=Api&P=0&h=220" },
-       { name: "Sofa",price: "From USD 200", img: "https://tse3.mm.bing.net/th?id=OIP.LiS2fljfwRGesh3j_VgE3AHaHa&pid=Api&P=0&h=220" },
+        { name: "Sofa",price: "From USD 200", img: "https://tse3.mm.bing.net/th?id=OIP.LiS2fljfwRGesh3j_VgE3AHaHa&pid=Api&P=0&h=220" },
         { name: "Chairs",price: "From USD 440", img: "https://tse4.mm.bing.net/th?id=OIP.BH3kzTe1vxVTyvIayvwDYgHaHa&pid=Api&P=0&h=220" },
         { name: "Kitchen mixer",price: "From USD 90", img: "https://tse2.mm.bing.net/th?id=OIP.UtX1NO_CpR-eFWl7VC4gYAHaHa&pid=Api&P=0&h=220" },
         { name: "Coffee maker",price: "From USD 240", img: "https://tse2.mm.bing.net/th?id=OIP.SCP75RVkSTsXnpK48ZO_TQHaHa&pid=Api&P=0&h=220" },
@@ -66,7 +65,7 @@ const HomePage = () => {
         { name: "Camera",price: "From USD 140", img: "https://tse3.mm.bing.net/th?id=OIP.0gFgiG7cqEGv8F0ClJ-DjwHaGZ&pid=Api&P=0&h=220" },
         { name: "Headphone",price: "From USD 40", img: "https://tse1.mm.bing.net/th?id=OIP.In6I5jFGUaOawLWTvy7xzwHaGs&pid=Api&P=0&h=220" },
         { name: "Kettle", price: "From USD 340", img: "https://tse4.mm.bing.net/th?id=OIP.yqhbVzAMJp4Xb5epGhbncwHaHa&pid=Api&P=0&h=220" },
-         { name: "Laptops",price: "From USD 200", img: "https://tse1.mm.bing.net/th?id=OIP.GyRmrVfJzkWrJzUnxRZWJAHaF7&pid=Api&P=0&h=220" },
+        { name: "Laptops",price: "From USD 200", img: "https://tse1.mm.bing.net/th?id=OIP.GyRmrVfJzkWrJzUnxRZWJAHaF7&pid=Api&P=0&h=220" },
         { name: "Gaming set",price: "From USD 440", img: "https://tse3.mm.bing.net/th?id=OIP.siv9KJq1idzkEaI1pQfDqwHaFj&pid=Api&P=0&h=220" },
         { name: "Laptops",price: "From USD 90", img: "https://tse1.mm.bing.net/th?id=OIF.FF6IAm2LlVf3NWOBvvFI6A&pid=Api&P=0&h=220" },
         { name: "Kettle", price: "From USD 240", img: "https://i5.walmartimages.com/asr/5c847915-ab0d-48a1-b9ab-f495a46e9810_1.c1cc2537e9bcb539fb8ff72910305c28.jpeg" },
@@ -109,66 +108,17 @@ const HomePage = () => {
   ];
 
   const regions = [
-  {
-    name: "Arabic Emrites",
-    flag: "https://flagcdn.com/w40/ae.png",
-    description: "Shopname.ae",
-  },
-  {
-    name: "Australia",
-    flag: "https://flagcdn.com/w40/au.png",
-    description: "Shopname.ae",
-  },
-  {
-    name: "United State",
-    flag: "https://flagcdn.com/w40/us.png",
-    description: "Shopname.ae",
-  },
-  {
-    name: "Russia",
-    flag: "https://flagcdn.com/w40/ru.png",
-    description: "Shopname.ae",
-  },
-  {
-    name: "Italy",
-    flag: "https://flagcdn.com/w40/it.png",
-    description: "Shopname.ae",
-  },
-   {
-    name: "Denmark",
-    flag: "https://flagcdn.com/w40/fr.png",
-    description: "Shopname.ae",
-  },
-  {
-    name: "France",
-    flag: "https://flagcdn.com/w40/fr.png",
-    description: "Shopname.ae",
-  },
-   {
-    name: "Arabic Emrites",
-    flag: "https://flagcdn.com/w40/ae.png",
-    description: "Shopname.ae",
-  },
-  {
-    name: "China",
-    flag: "https://flagcdn.com/w40/cn.png",
-    description: "Shopname.ae",
-  },
-  {
-    name: "Great British",
-    flag: "https://flagcdn.com/w40/gb.png",
-    description: "Shopname.ae",
-  },
-
-
-
-
-
-
-
-];
-  // ... (your existing data arrays remain the same)
-
+    { name: "Arabic Emrites", flag: "https://flagcdn.com/w40/ae.png", description: "Shopname.ae" },
+    { name: "Australia", flag: "https://flagcdn.com/w40/au.png", description: "Shopname.ae" },
+    { name: "United States", flag: "https://flagcdn.com/w40/us.png", description: "Shopname.ae" },
+    { name: "Russia", flag: "https://flagcdn.com/w40/ru.png", description: "Shopname.ae" },
+    { name: "Italy", flag: "https://flagcdn.com/w40/it.png", description: "Shopname.ae" },
+    { name: "Denmark", flag: "https://flagcdn.com/w40/dk.png", description: "Shopname.ae" },
+    { name: "France", flag: "https://flagcdn.com/w40/fr.png", description: "Shopname.ae" },
+    { name: "China", flag: "https://flagcdn.com/w40/cn.png", description: "Shopname.ae" },
+    { name: "Great Britain", flag: "https://flagcdn.com/w40/gb.png", description: "Shopname.ae" },
+  ];
+  
   const navigate = useNavigate();
   
   const handleClick = () => {
@@ -200,11 +150,6 @@ const HomePage = () => {
     visible: { opacity: 1, transition: { duration: 0.8 } }
   };
 
-  const scaleUp = {
-    hover: { scale: 1.03, transition: { duration: 0.3 } },
-    tap: { scale: 0.98 }
-  };
-
   const staggerCards = {
     hidden: { opacity: 0 },
     visible: {
@@ -222,49 +167,52 @@ const HomePage = () => {
 
   return (
     <motion.div 
-      className="bg-gray-50 px-4 lg:px-10 py-6"
+      className="bg-gray-50 px-4 md:px-8 lg:px-12 py-6"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
-      {/* Top Section */}
-      <div className="flex gap-4">
-        {/* Sidebar */}
+      {/* Top Section - Enhanced Desktop Layout */}
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Categories Sidebar - Desktop Only */}
         <motion.div 
-          className="w-1/5 bg-white p-4 rounded shadow text-sm space-y-2"
+          className="hidden lg:block w-full lg:w-1/5 bg-white p-5 rounded-xl shadow-lg"
           variants={itemVariants}
         >
-          <h3 className="font-semibold text-gray-700">Categories</h3>
-          {categories.map((cat, i) => (
-            <motion.p 
-              key={i} 
-              className="text-gray-600 hover:text-blue-600 cursor-pointer"
-              onClick={handleClick}
-              variants={itemVariants}
-              whileHover={{ x: 5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              {cat}
-            </motion.p>
-          ))}
+          <h3 className="font-bold text-gray-800 text-lg mb-4 pb-2 border-b border-gray-200">Categories</h3>
+          <div className="space-y-2">
+            {categories.map((cat, i) => (
+              <motion.div 
+                key={i} 
+                className="text-gray-700 hover:text-blue-600 cursor-pointer p-2 rounded-lg hover:bg-blue-50 transition-colors"
+                onClick={handleClick}
+                variants={itemVariants}
+                whileHover={{ x: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {cat}
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Banner */}
+        {/* Main Banner */}
         <motion.div 
-          className="w-3/5 bg-white rounded shadow relative overflow-hidden"
+          className="w-full lg:w-3/5 bg-white rounded-2xl shadow-lg overflow-hidden relative"
           variants={fadeIn}
         >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent z-10"></div>
           <motion.img
             src={Banner}
             alt="Banner"
-            className="rounded w-full h-auto object-cover"
+            className="w-full h-64 md:h-80 lg:h-96 object-cover"
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           />
-          <div className="absolute inset-0 flex flex-col items-start justify-center px-9 bg-black/30 text-white">
+          <div className="absolute inset-0 flex flex-col items-start justify-center px-6 md:px-10 lg:px-14 z-20">
             <motion.h4 
-              className="text-3xl text-black font-semibold mb-1"
+              className="text-xl md:text-2xl lg:text-3xl font-semibold text-white mb-2"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
@@ -272,7 +220,7 @@ const HomePage = () => {
               Latest trending
             </motion.h4>
             <motion.h1 
-              className="text-4xl mb-4 font-bold text-black max-w-md"
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 max-w-md"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
@@ -281,9 +229,9 @@ const HomePage = () => {
             </motion.h1>
             <motion.button 
               onClick={handleClick} 
-              className="bg-white hover:bg-blue-700 text-black font-semibold px-6 py-2 rounded"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="bg-white hover:bg-blue-50 text-blue-700 font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-300"
+              whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.2)" }}
+              whileTap={{ scale: 0.98 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
@@ -293,91 +241,122 @@ const HomePage = () => {
           </div>
         </motion.div>
 
-        {/* Login Box */}
+        {/* Login Box - Enhanced for Desktop */}
         <motion.div 
-          className="w-1/5 bg-white p-4 rounded shadow space-y-4"
+          className="w-full lg:w-1/5 bg-white p-5 rounded-2xl shadow-lg flex flex-col gap-5"
           variants={itemVariants}
         >
-          <div className="bg-sky-100">
-            <div className="flex gap-2 items-center p-2">
-              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* SVG path remains the same */}
-              </svg>
-              <p className="text-sm text-gray-700 pl-3">Hi, user <br /> let's get started</p>
+          <div className="bg-blue-50 rounded-xl p-4">
+            <div className="flex items-center gap-3">
+              <div className="bg-blue-100 p-3 rounded-full">
+                <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4.42 0-8 3.58-8 8h16c0-4.42-3.58-8-8-8z" />
+                </svg>
+              </div>
+              <p className="text-gray-800 font-medium">Hi, user <br /> let's get started</p>
             </div>
-            <motion.button 
-              className="mt-2 bg-blue-600 text-white w-[90%] ml-2 py-1 rounded"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Join now
-            </motion.button>
-            <motion.button 
-              className="mt-2 border border-blue-600 bg-white text-blue-600 w-[90%] ml-2 mb-2 center py-1 rounded"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Log in
-            </motion.button>
+            <div className="flex flex-col gap-2 mt-4">
+              <motion.button 
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Join now
+              </motion.button>
+              <motion.button 
+                className="border-2 border-blue-600 text-blue-600 font-medium py-2.5 px-4 rounded-lg hover:bg-blue-50 transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Log in
+              </motion.button>
+            </div>
           </div>
+          
           <motion.div 
-            className="bg-orange-600 p-2 text-lg text-orange-100 rounded"
+            className="bg-gradient-to-r from-orange-500 to-orange-600 p-4 rounded-xl text-white"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            Get US $10 off <br /> with a new <br /> supplier
+            <h3 className="font-bold text-lg mb-2">Special Offer</h3>
+            <p>Get US $10 off <br /> with a new supplier</p>
           </motion.div>
+          
           <motion.button 
-            className="bg-sky-600 text-blue-100 text-lg w-full rounded"
+            className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium py-3 px-4 rounded-lg hover:shadow-lg transition-all"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            Send quotes with <br />supplier <br />preferences
+            <span className="block font-bold">Send quotes with</span>
+            <span>supplier preferences</span>
           </motion.button>
         </motion.div>
       </div>
 
-      {/* Deals & Offers */}
+      {/* Mobile Categories */}
       <motion.div 
-        className="mt-10 bg-white p-6 rounded shadow border border-gray-200"
+        className="lg:hidden mt-6 bg-white p-4 rounded-xl shadow overflow-x-auto"
+        variants={itemVariants}
+      >
+        <h3 className="font-semibold text-gray-700 mb-3">Categories</h3>
+        <div className="flex gap-3">
+          {categories.map((cat, i) => (
+            <motion.div 
+              key={i} 
+              className="bg-gray-100 px-4 py-2 rounded-xl text-sm whitespace-nowrap cursor-pointer hover:bg-blue-100 transition-colors"
+              onClick={handleClick}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+            >
+              {cat}
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Deals & Offers - Enhanced Desktop Layout */}
+      <motion.div 
+        className="mt-8 bg-white p-5 rounded-2xl shadow-lg border border-gray-100"
         variants={fadeIn}
       >
-        {/* Header */}
-        <div className="mb-4">
-          <h2 className="text-xl font-bold text-gray-800">Deals and offers</h2>
-          <p className="text-sm text-gray-500">Hygiene equipments</p>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+          <div>
+            <h2 className="text-xl md:text-2xl font-bold text-gray-800">Deals and offers</h2>
+            <p className="text-gray-500 mt-1">Hygiene equipment on discount</p>
+          </div>
+          <div className="flex items-center gap-2 mt-3 md:mt-0">
+            <span className="text-gray-500">Ends in:</span>
+            <div className="bg-blue-900 text-white font-medium px-3 py-1 rounded">04:13:56:22</div>
+          </div>
         </div>
 
-        {/* Main content: Timer + Products */}
-        <div className="flex gap-6 items-start">
-          {/* Countdown Timer */}
+        <div className="flex flex-col md:flex-row gap-6 items-center">
           <motion.div 
-            className="grid grid-cols-2 gap-2"
+            className="grid grid-cols-4 gap-3 w-full md:w-auto"
             variants={staggerCards}
             initial="hidden"
             animate="visible"
           >
             {[
               { label: "Days", value: "04" },
-              { label: "Hour", value: "13" },
-              { label: "Min", value: "34" },
-              { label: "Sec", value: "56" },
+              { label: "Hours", value: "13" },
+              { label: "Mins", value: "34" },
+              { label: "Secs", value: "56" },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-blue-900 text-white rounded px-4 py-2 text-center w-20"
+                className="bg-gradient-to-b from-blue-900 to-blue-800 text-white rounded-xl p-3 text-center min-w-[70px]"
                 variants={cardAnimation}
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="text-lg font-bold">{item.value}</div>
-                <div className="text-xs">{item.label}</div>
+                <div className="text-xl font-bold">{item.value}</div>
+                <div className="text-xs mt-1">{item.label}</div>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Product Cards */}
           <motion.div 
-            className="grid grid-cols-5 gap-6 flex-1"
+            className="flex overflow-x-auto pb-4 gap-5 w-full md:grid md:grid-cols-5 md:flex-1"
             variants={staggerCards}
             initial="hidden"
             animate="visible"
@@ -385,63 +364,62 @@ const HomePage = () => {
             {deals.map((item, i) => (
               <motion.div 
                 key={i} 
-                className="text-center border border-gray-200 p-2"
+                className="text-center border border-gray-200 rounded-xl p-4 min-w-[150px] hover:shadow-lg transition-shadow"
                 onClick={handleClick}
                 variants={cardAnimation}
                 whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0px 5px 15px rgba(0,0,0,0.1)"
+                  scale: 1.03,
+                  boxShadow: "0px 10px 25px rgba(0,0,0,0.1)"
                 }}
               >
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  className="mx-auto h-24 object-contain"
-                />
-                <p className="text-sm text-gray-800 mt-2">{item.name}</p>
-                <p className="text-red-500 text-sm font-medium mt-1">{item.discount}</p>
+                <div className="bg-gray-100 rounded-xl p-4 mb-3">
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="mx-auto h-20 object-contain"
+                  />
+                </div>
+                <p className="font-medium text-gray-800">{item.name}</p>
+                <p className="text-red-500 font-bold mt-2">{item.discount}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </motion.div>
 
-      {/* Product Sections */}
+      {/* Product Sections - Enhanced Desktop Layout */}
       <div className="mt-10 space-y-8">
         {productSections.map((section, index) => (
           <motion.div
             key={index}
-            className="grid grid-cols-1 lg:grid-cols-5 bg-white rounded shadow overflow-hidden"
+            className="flex flex-col lg:flex-row bg-white rounded-2xl shadow-lg overflow-hidden"
             variants={itemVariants}
           >
-            {/* Left Banner */}
             <motion.div
-              className="lg:col-span-1 relative flex flex-col justify-between p-4 text-black"
+              className="lg:w-1/5 relative p-6 text-white flex flex-col justify-between min-h-[250px]"
               style={{
                 backgroundImage: `url(https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                position: "relative",
               }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.01 }}
             >
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70 z-0"></div>
               <div className="relative z-10">
-                <h3 className="text-xl font-semibold">{section.title}</h3>
+                <h3 className="text-xl font-bold">{section.title}</h3>
               </div>
               <motion.button 
                 onClick={handleClick} 
-                className="mt-4 bg-white text-gray-800 border border-gray-300 text-sm px-4 py-1 rounded hover:bg-gray-200 w-fit relative z-10"
+                className="relative z-10 mt-4 bg-white text-gray-800 font-medium px-5 py-2.5 rounded-lg hover:bg-gray-100 w-fit"
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.98 }}
               >
                 Source now
               </motion.button>
-              <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-0" />
             </motion.div>
 
-            {/* Products Grid */}
             <motion.div 
-              className="lg:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-4 p-4"
+              className="lg:w-4/5 grid grid-cols-2 md:grid-cols-4 gap-4 p-5"
               variants={staggerCards}
               initial="hidden"
               animate="visible"
@@ -449,24 +427,24 @@ const HomePage = () => {
               {section.items.map((item, idx) => (
                 <motion.div
                   key={idx}
-                  className="text-center text-sm border rounded p-2 hover:shadow"
+                  className="text-center border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all"
                   onClick={handleClick}
                   variants={cardAnimation}
                   whileHover={{ 
-                    scale: 1.03,
-                    boxShadow: "0px 5px 15px rgba(0,0,0,0.1)"
+                    y: -5,
+                    boxShadow: "0px 10px 25px rgba(0,0,0,0.1)"
                   }}
                 >
-                  <div className="flex items-center justify-between py-2 h-full">
-                    <div>
-                      <p className="mt-2 text-gray-700 font-medium">{item.name}</p>
-                      <p className="text-xs text-gray-500">{item.price}</p>
+                  <div className="flex items-center justify-between">
+                    <div className="text-left">
+                      <p className="font-medium text-gray-800">{item.name}</p>
+                      <p className="text-gray-500 text-sm mt-1">{item.price}</p>
                     </div>
-                    <div>
+                    <div className="bg-gray-100 p-2 rounded-lg">
                       <img
                         src={item.img}
                         alt={item.name}
-                        className="mx-auto h-16 w-16 object-contain"
+                        className="h-14 w-14 object-contain"
                       />
                     </div>
                   </div>
@@ -477,65 +455,76 @@ const HomePage = () => {
         ))}
       </div>
 
-      {/* Inquiry Banner */}
+      {/* Inquiry Banner - Enhanced Desktop Layout */}
       <motion.div 
-        className="mt-10 bg-blue-500 text-white p-6 rounded shadow flex justify-between"
+        className="mt-10 bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-8 rounded-2xl shadow-lg flex flex-col lg:flex-row justify-between gap-8"
         variants={fadeIn}
       >
-        <div className="w-1/2">
-          <h3 className="text-3xl font-semibold mb-2">
-            An easy way to send <br /> requests to all suppliers
+        <div className="lg:w-1/2">
+          <h3 className="text-2xl lg:text-3xl font-bold mb-4">
+            An easy way to send requests to all suppliers
           </h3>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          <p className="text-blue-100 text-lg max-w-lg">
+            Simplify your sourcing process with our platform that connects you with verified suppliers worldwide.
           </p>
         </div>
         <motion.div 
-          className="w-[45%] bg-white text-black p-4 rounded"
+          className="lg:w-2/5 bg-white text-black p-6 rounded-2xl shadow-xl"
           whileHover={{ y: -5 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <p className="mb-2 font-semibold text-gray-700">Send quote to suppliers</p>
-          <input
-            type="text"
-            placeholder="What item you need?"
-            className="w-full border p-2 rounded mb-2 text-sm"
-          />
-          <textarea
-            rows="2"
-            placeholder="Type more details"
-            className="w-full border p-2 rounded mb-2 text-sm"
-          ></textarea>
-          <div className="flex gap-2 mb-2">
+          <h4 className="font-bold text-lg mb-4 text-gray-800">Send quote to suppliers</h4>
+          <div className="space-y-4">
             <input
-              type="number"
-              placeholder="Quantity"
-              className="w-2/3 border p-2 rounded text-sm"
+              type="text"
+              placeholder="What item you need?"
+              className="w-full border border-gray-300 p-3 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
-            <select className="w-1/3 border p-2 rounded text-sm">
-              <option>Pcs</option>
-              <option>Kg</option>
-              <option>Liters</option>
-            </select>
+            <textarea
+              rows="3"
+              placeholder="Type more details"
+              className="w-full border border-gray-300 p-3 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            ></textarea>
+            <div className="flex gap-3">
+              <input
+                type="number"
+                placeholder="Quantity"
+                className="w-2/3 border border-gray-300 p-3 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+              <select className="w-1/3 border border-gray-300 p-3 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <option>Pcs</option>
+                <option>Kg</option>
+                <option>Liters</option>
+              </select>
+            </div>
+            <motion.button 
+              className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Send Inquiry
+            </motion.button>
           </div>
-          <motion.button 
-            className="bg-blue-600 text-white py-2 px-4 rounded w-full text-sm"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Send Inquiry
-          </motion.button>
         </motion.div>
       </motion.div>
 
-      {/* Recommended Items */}
+      {/* Recommended Items - Enhanced Desktop Layout */}
       <motion.div 
-        className="mt-10"
+        className="mt-12"
         variants={fadeIn}
       >
-        <h2 className="font-semibold text-lg mb-4">Recommended items</h2>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="font-bold text-xl md:text-2xl text-gray-800">Recommended items</h2>
+          <button className="text-blue-600 font-medium flex items-center hover:underline">
+            View all
+            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+        
         <motion.div 
-          className="grid grid-cols-6 gap-4"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
           variants={staggerCards}
           initial="hidden"
           animate="visible"
@@ -543,34 +532,36 @@ const HomePage = () => {
           {recommendedItems.map((item) => (
             <motion.div 
               key={item.id} 
-              className="bg-white p-4 rounded shadow text-center text-sm"
+              className="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition-all"
               onClick={handleClick}
               variants={cardAnimation}
               whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0px 10px 25px rgba(0,0,0,0.1)"
+                y: -8,
+                boxShadow: "0px 15px 30px rgba(0,0,0,0.12)"
               }}
             >
-              <img 
-                src={item.img} 
-                alt={`Item ${item.id}`} 
-                className="mx-auto mb-2 h-44 w-44 object-contain" 
-              />
-              <p className="font-medium">{item.price}</p>
-              <p className="text-gray-600">{item.description}</p>
+              <div className="bg-gray-100 rounded-xl p-4 mb-3">
+                <img 
+                  src={item.img} 
+                  alt={`Item ${item.id}`} 
+                  className="mx-auto h-32 object-contain" 
+                />
+              </div>
+              <p className="font-bold text-gray-800">{item.price}</p>
+              <p className="text-gray-600 mt-1 text-sm">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>
       </motion.div>
 
-      {/* Extra Services */}
+      {/* Extra Services - Enhanced Desktop Layout */}
       <motion.div 
-        className="mt-10"
+        className="mt-14"
         variants={fadeIn}
       >
-        <h2 className="font-semibold text-2xl mb-10">Our extra services</h2>
+        <h2 className="font-bold text-2xl md:text-3xl text-center mb-12">Our extra services</h2>
         <motion.div 
-          className="grid grid-cols-4 gap-4"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           variants={staggerCards}
           initial="hidden"
           animate="visible"
@@ -578,33 +569,43 @@ const HomePage = () => {
           {services.map((service, i) => (
             <motion.div 
               key={i} 
-              className="bg-white p-4 rounded shadow text-center text-sm"
+              className="bg-white rounded-2xl shadow overflow-hidden hover:shadow-xl transition-all"
               onClick={handleClick}
               variants={cardAnimation}
               whileHover={{ 
                 y: -10,
-                boxShadow: "0px 10px 25px rgba(0,0,0,0.1)"
+                boxShadow: "0px 20px 40px rgba(0,0,0,0.15)"
               }}
             >
-              <img 
-                src={service.img} 
-                alt={service.name} 
-                className="h-28 w-full object-cover rounded mb-2"
-              />
-              <p className="font-semibold text-lg">{service.name}</p>
+              <div className="h-48 overflow-hidden">
+                <img 
+                  src={service.img} 
+                  alt={service.name} 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="font-bold text-lg text-gray-800">{service.name}</h3>
+                <button className="mt-3 text-blue-600 font-medium flex items-center hover:underline">
+                  Learn more
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+              </div>
             </motion.div>
           ))}
         </motion.div>
       </motion.div>
 
-      {/* Suppliers by Region */}
+      {/* Suppliers by Region - Enhanced Desktop Layout */}
       <motion.div 
-        className="mt-10 hidden lg:block"
+        className="mt-14 hidden lg:block"
         variants={fadeIn}
       >
-        <h2 className="font-semibold text-2xl mb-10">Suppliers by Region</h2>
+        <h2 className="font-bold text-2xl md:text-3xl text-center mb-10">Suppliers by Region</h2>
         <motion.div 
-          className="grid grid-cols-4 xl:grid-cols-6 gap-6 text-sm text-gray-600"
+          className="grid grid-cols-5 gap-6"
           variants={staggerCards}
           initial="hidden"
           animate="visible"
@@ -612,51 +613,47 @@ const HomePage = () => {
           {regions.map((region, i) => (
             <motion.div 
               key={i} 
-              className="flex items-center hover:text-blue-600 cursor-pointer"
+              className="bg-white rounded-xl shadow p-4 flex items-center hover:shadow-lg transition-all"
               variants={cardAnimation}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.03 }}
             >
-              <div>
+              <div className="flex-shrink-0">
                 <img
                   src={region.flag}
                   alt={`${region.name} flag`}
-                  className="w-12 h-10 rounded shadow mb-2"
+                  className="w-12 h-9 rounded shadow"
                 />
               </div>
-              <div className="pl-3">
-                <p className="font-medium">{region.name}</p>
-                <p className="text-xs text-gray-500">{region.description}</p>
+              <div className="ml-4">
+                <p className="font-medium text-gray-800">{region.name}</p>
+                <p className="text-gray-500 text-sm">{region.description}</p>
               </div>
             </motion.div>
           ))}
         </motion.div>
       </motion.div>
 
-      {/* Newsletter Subscription */}
+      {/* Newsletter Subscription - Enhanced Desktop Layout */}
       <motion.div 
-        className="mt-10 bg-gray-300 p-6 rounded shadow text-center"
+        className="mt-14 bg-gradient-to-r from-gray-800 to-gray-900 text-white p-8 md:p-12 rounded-2xl shadow-xl text-center"
         variants={fadeIn}
         whileHover={{ y: -5 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
-        <p className="text-gray-700 font-bold text-2xl mb-2">Subscribe on our newsletter</p>
-        <p className="text-sm text-gray-500 mb-4">
-          Get daily news on upcoming offers from many suppliers all over the world
+        <h2 className="font-bold text-2xl md:text-3xl mb-3">Subscribe to our newsletter</h2>
+        <p className="text-gray-300 max-w-2xl mx-auto mb-8">
+          Get daily updates on upcoming offers from suppliers all over the world. Stay informed with the latest deals.
         </p>
-        <div className="flex justify-center gap-2">
-          <motion.input
+        <div className="flex flex-col sm:flex-row justify-center gap-3 max-w-xl mx-auto">
+          <input
             type="email"
-            placeholder="Email"
-            className="border p-2 rounded w-1/3"
-            whileFocus={{ 
-              scale: 1.02,
-              boxShadow: "0 0 0 2px #3b82f6"
-            }}
+            placeholder="Your email address"
+            className="flex-grow border border-gray-600 bg-gray-700 text-white p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
           />
           <motion.button 
-            className="bg-blue-600 text-white px-4 rounded"
+            className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold px-6 py-3 rounded-lg hover:shadow-lg transition-all"
             whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.98 }}
           >
             Subscribe
           </motion.button>

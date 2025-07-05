@@ -10,7 +10,6 @@ const WishListView = ({
 }) => {
   const [notification, setNotification] = useState({ show: false, message: '', type: '' });
 
-  // Show custom notification
   const showNotification = (message, type) => {
     setNotification({ show: true, message, type });
     setTimeout(() => setNotification({ show: false, message: '', type: '' }), 3000);
@@ -70,21 +69,21 @@ const WishListView = ({
 
   return (
     <>
-      {/* Notification Toast */}
+      {/* Notification Toast - Responsive positioning */}
       <AnimatePresence>
         {notification.show && (
           <motion.div
-            className={`fixed top-4 right-4 px-4 py-2 rounded-md shadow-lg z-[100] ${
-              notification.type === 'success' 
+            className={`fixed z-[100] px-4 py-2 rounded-md shadow-lg
+              top-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-auto
+              ${notification.type === 'success' 
                 ? 'bg-green-500 text-white' 
-                : 'bg-red-500 text-white'
-            }`}
+                : 'bg-red-500 text-white'}`}
             variants={notificationVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
-            <div className="flex items-center">
+            <div className="flex items-center justify-center sm:justify-start">
               {notification.type === 'success' ? (
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -94,23 +93,24 @@ const WishListView = ({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               )}
-              {notification.message}
+              <span className="text-sm sm:text-base">{notification.message}</span>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Wishlist Modal */}
+      {/* Wishlist Modal - Responsive adjustments */}
       <AnimatePresence>
         <motion.div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4"
           variants={backdrop}
           initial="hidden"
           animate="visible"
           exit="hidden"
         >
           <motion.div
-            className="bg-white rounded-lg p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-lg p-4 w-full max-w-4xl max-h-[90vh] overflow-y-auto
+                      mx-2 sm:mx-4 md:p-6"
             variants={modal}
             initial="hidden"
             animate="visible"
@@ -118,7 +118,7 @@ const WishListView = ({
           >
             <div className="flex justify-between items-center mb-4">
               <motion.h2 
-                className="text-2xl font-bold"
+                className="text-xl sm:text-2xl font-bold"
                 initial={{ y: -10 }}
                 animate={{ y: 0 }}
                 transition={{ type: 'spring' }}
@@ -130,6 +130,7 @@ const WishListView = ({
                 className="text-gray-500 hover:text-gray-700 text-2xl"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
+                aria-label="Close wishlist"
               >
                 &times;
               </motion.button>
@@ -137,13 +138,13 @@ const WishListView = ({
             
             {wishlistItems.length === 0 ? (
               <motion.div 
-                className="text-center py-10"
+                className="text-center py-8 sm:py-10"
                 variants={emptyStateAnimation}
               >
-                <p className="text-gray-500 text-lg">Your wishlist is empty</p>
+                <p className="text-gray-500 text-base sm:text-lg">Your wishlist is empty</p>
                 <motion.button 
                   onClick={onClose}
-                  className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                  className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm sm:text-base"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -151,12 +152,12 @@ const WishListView = ({
                 </motion.button>
               </motion.div>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <AnimatePresence>
                   {wishlistItems.map((item, index) => (
                     <motion.div 
                       key={item.id}
-                      className="flex items-center justify-between p-4 border rounded-lg"
+                      className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 border rounded-lg"
                       variants={itemAnimation}
                       custom={index}
                       initial="hidden"
@@ -165,21 +166,21 @@ const WishListView = ({
                       layout
                       whileHover={{ y: -5, boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
                     >
-                      <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-3 sm:space-x-4 w-full sm:w-auto">
                         <motion.img 
                           src={item.image} 
                           alt={item.title} 
-                          className="w-20 h-20 object-contain"
+                          className="w-16 h-16 sm:w-20 sm:h-20 object-contain flex-shrink-0"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.2 }}
                         />
-                        <div>
-                          <h3 className="font-semibold">{item.title}</h3>
-                          <p className="text-red-600 font-bold">
+                        <div className="min-w-0">
+                          <h3 className="font-semibold text-sm sm:text-base truncate">{item.title}</h3>
+                          <p className="text-red-600 font-bold text-sm sm:text-base">
                             {item.price}
                             {item.originalPrice && (
-                              <span className="line-through text-gray-400 ml-2">
+                              <span className="line-through text-gray-400 ml-2 text-xs sm:text-sm">
                                 {item.originalPrice}
                               </span>
                             )}
@@ -187,10 +188,10 @@ const WishListView = ({
                         </div>
                       </div>
                       
-                      <div className="flex space-x-3">
+                      <div className="flex flex-wrap gap-2 mt-3 sm:mt-0 w-full sm:w-auto justify-end">
                         <motion.button
                           onClick={() => onViewProduct(item)}
-                          className="text-blue-500 hover:text-blue-700 font-medium"
+                          className="text-blue-500 hover:text-blue-700 font-medium text-xs sm:text-sm px-2 py-1 sm:px-3"
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
                         >
@@ -201,7 +202,7 @@ const WishListView = ({
                             addToCart(item);
                             showNotification(`${item.title} added to cart!`, 'success');
                           }}
-                          className="text-green-600 hover:text-green-800 font-medium"
+                          className="text-green-600 hover:text-green-800 font-medium text-xs sm:text-sm px-2 py-1 sm:px-3"
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
                         >
@@ -212,7 +213,7 @@ const WishListView = ({
                             removeFromWishList(item.id);
                             showNotification(`${item.title} removed from wishlist!`, 'error');
                           }}
-                          className="text-red-600 hover:text-red-800 font-medium"
+                          className="text-red-600 hover:text-red-800 font-medium text-xs sm:text-sm px-2 py-1 sm:px-3"
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
                         >
@@ -223,10 +224,10 @@ const WishListView = ({
                   ))}
                 </AnimatePresence>
                 
-                <div className="mt-6 flex justify-end space-x-3">
+                <div className="mt-4 sm:mt-6 flex justify-end">
                   <motion.button
                     onClick={onClose}
-                    className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100"
+                    className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100 text-sm sm:text-base"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >

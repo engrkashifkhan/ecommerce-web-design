@@ -94,7 +94,7 @@ const Footer = () => {
             alt={selectedLang.label}
             className="w-5 h-4 object-cover"
           />
-          <span>{selectedLang.label}</span>
+          <span className="text-sm sm:text-base">{selectedLang.label}</span>
           <motion.svg
             className={`w-4 h-4 ml-1 transition-transform ${isOpen ? 'rotate-180' : ''}`}
             fill="none"
@@ -110,7 +110,7 @@ const Footer = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="absolute left-0 bottom-full mb-2 w-48 bg-white border border-gray-200 shadow-lg rounded overflow-y-auto max-h-60"
+              className="absolute left-0 bottom-full mb-2 w-full sm:w-48 bg-white border border-gray-200 shadow-lg rounded overflow-y-auto max-h-60"
               variants={dropdownVariants}
               initial="hidden"
               animate="visible"
@@ -130,7 +130,7 @@ const Footer = () => {
                     alt={lang.label}
                     className="w-5 h-4 object-cover"
                   />
-                  <span>{lang.label}</span>
+                  <span className="text-sm">{lang.label}</span>
                 </motion.div>
               ))}
             </motion.div>
@@ -142,24 +142,24 @@ const Footer = () => {
 
   return (
     <motion.footer 
-      className="bg-gray-100 text-gray-700 py-10 px-8 hidden md:block"
+      className="bg-gray-100 text-gray-700 py-8 px-4 sm:py-10 sm:px-8"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <motion.div 
-        className="max-w-7xl mx-auto grid grid-cols-6 gap-8"
+        className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8"
         variants={containerVariants}
         initial="hidden"
         animate="show"
       >
         {/* Brand */}
-        <motion.div className="space-y-4" variants={itemVariants}>
+        <motion.div className="space-y-4 col-span-full sm:col-span-1 lg:col-span-1" variants={itemVariants}>
           <div className="flex items-center space-x-2">
             <motion.svg 
               onClick={handleClick} 
               width="44" height="44" viewBox="0 0 44 44" fill="none" 
-              className="cursor-pointer"
+              className="cursor-pointer w-10 h-10"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -174,7 +174,7 @@ const Footer = () => {
             </motion.svg>
             <motion.h2 
               onClick={handleClick} 
-              className="text-xl font-bold text-blue-600 cursor-pointer"
+              className="text-xl font-bold text-blue-600 cursor-pointer "
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -182,13 +182,13 @@ const Footer = () => {
             </motion.h2>
           </div>
           <p className="text-sm text-gray-500">
-            Best information about the company <br /> goes here but now lorem ipsum is
+            Best information about the company <br className="hidden sm:block" /> goes here but now lorem ipsum is
           </p>
           <div className="flex space-x-3 text-gray-400 text-lg">
             {[
-              { icon: <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M18.8953 9.99L17.4834 9.99094C16.3762 9.99094 16.1616 10.5169 16.1616 11.2884V12.9909H18.8025L18.4584 15.6581H16.1616V22.5H13.4081V15.6581H11.1056V12.9909H13.4081V11.025C13.4081 8.74219 14.8022 7.5 16.8375 7.5C17.8125 7.5 18.6506 7.57219 18.8953 7.605V9.99ZM15 0C6.71625 0 0 6.71531 0 15C0 23.2837 6.71625 30 15 30C23.2847 30 30 23.2837 30 15C30 6.71531 23.2847 0 15 0Z" fill="#BDC4CD"/></svg> },
+              { icon: <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M18.8953 9.99L17.4834 9.99094C16.3762 9.99094 16.1616 10.5169 16.1616 11.2884V12.9909H18.8025L18.4584 15.6581H16.1616V22.5H13.4081V15.6581H11.1056V12.9909H11.1056V12.9909H13.4081V11.025C13.4081 8.74219 14.8022 7.5 16.8375 7.5C17.8125 7.5 18.6506 7.57219 18.8953 7.605V9.99ZM15 0C6.71625 0 0 6.71531 0 15C0 23.2837 6.71625 30 15 30C23.2847 30 30 23.2837 30 15C30 6.71531 23.2847 0 15 0Z" fill="#BDC4CD"/></svg> },
               { icon: <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M20.9644 11.9409C20.97 12.0731 20.9738 12.2053 20.9738 12.3394C20.9738 16.4053 17.8781 21.0947 12.2175 21.0947C10.4794 21.0947 8.86219 20.5856 7.5 19.7128C7.74094 19.7409 7.98562 19.755 8.23406 19.755C9.67594 19.755 11.0025 19.2638 12.0562 18.4378C10.7091 18.4134 9.57281 17.5238 9.18094 16.3013C9.36938 16.3369 9.56156 16.3556 9.76031 16.3556C10.0406 16.3556 10.3125 16.3181 10.5712 16.2478C9.16313 15.9656 8.10281 14.7216 8.10281 13.2309C8.10281 13.2178 8.10281 13.2047 8.10281 13.1916C8.51719 13.4222 8.9925 13.5609 9.49687 13.5769C8.67094 13.0247 8.12719 12.0825 8.12719 11.0156C8.12719 10.4513 8.27906 9.9225 8.54437 9.46781C10.0622 11.3297 12.33 12.555 14.8875 12.6834C14.835 12.4584 14.8078 12.2231 14.8078 11.9822C14.8078 10.2825 16.1859 8.90438 17.8847 8.90438C18.7706 8.90438 19.5703 9.27844 20.1309 9.87656C20.8322 9.73875 21.4912 9.48281 22.0856 9.13031C21.8559 9.84844 21.3675 10.4513 20.7328 10.8328C21.3553 10.7578 21.9478 10.5928 22.5 10.3481C22.0875 10.965 21.5653 11.5069 20.9644 11.9409ZM15 0C6.71531 0 0 6.71531 0 15C0 23.2837 6.71531 30 15 30C23.2847 30 30 23.2837 30 15C30 6.71531 23.2847 0 15 0Z" fill="#BDC4CD"/></svg> },
-              { icon: <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M22.5 22.4859H19.3922V17.6222C19.3922 16.4625 19.3716 14.9709 17.7769 14.9709C16.1597 14.9709 15.9131 16.2347 15.9131 17.5397V22.4859H12.8081V12.4847H15.7875V13.8525H15.8306C16.245 13.0659 17.2594 12.2362 18.7716 12.2362C21.9187 12.2362 22.5 14.3072 22.5 17.0006V22.4859ZM9.30375 11.1187C8.30531 11.1187 7.5 10.3106 7.5 9.31594C7.5 8.32125 8.30531 7.51312 9.30375 7.51312C10.2975 7.51312 11.1047 8.32125 11.1047 9.31594C11.1047 10.3106 10.2975 11.1187 9.30375 11.1187ZM10.8581 22.4859H7.74656V12.4847H10.8581V22.4859ZM15 0C6.71531 0 0 6.71531 0 15C0 23.2837 6.71531 30 15 30C23.2847 30 30 23.2837 30 15C30 6.71531 23.2847 0 15 0Z" fill="#BDC4CD"/></svg> },
+              { icon: <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M22.5 22.4859H19.3922V17.6222C19.3922 16.4625 19.3716 14.9709 17.7769 14.9709C16.1597 14.9709 15.9131 16.2347 15.9131 17.5397V22.4859H12.8081V12.4847H15.7875V13.8525H15.8306C16.245 13.0659 17.2594 12.2362 18.7716 12.2362C21.9187 12.2362 22.5 14.3072 22.5 17.0006V22.4859ZM9.30375 11.1187C8.30531 11.1187 7.5 10.3106 7.5 9.31594C7.5 8.32125 8.30531 7.51312 9.30375 7.51312C10.2975 7.51312 11.1047 8.32125 11.1047 9.31594C11.1047 10.3106 10.2975 11.1187 9.30375 11.1187ZM10.8581 22.4859H7.74656V12.4847H7.74656V12.4847H10.8581V22.4859ZM15 0C6.71531 0 0 6.71531 0 15C0 23.2837 6.71531 30 15 30C23.2847 30 30 23.2837 30 15C30 6.71531 23.2847 0 15 0Z" fill="#BDC4CD"/></svg> },
               { icon: <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M15.0175 17.8948C16.6103 17.8948 17.9022 16.6067 17.9022 15.0167C17.9022 13.4276 16.6103 12.1395 15.0175 12.1395C13.4247 12.1395 12.1328 13.4276 12.1328 15.0167C12.1328 16.6067 13.4247 17.8948 15.0175 17.8948ZM18.3392 12.0694H20.367C20.5986 12.0694 20.787 11.8819 20.787 11.6512V9.62719C20.787 9.39656 20.5986 9.20906 20.367 9.20906H18.3392C18.1076 9.20906 17.9192 9.39656 17.9192 9.62719V11.6512C17.9192 11.8819 18.1076 12.0694 18.3392 12.0694ZM22.5 20.7206C22.5 21.7031 21.7022 22.5 20.7169 22.5H9.28312C8.29875 22.5 7.5 21.7031 7.5 20.7206V9.27844C7.5 8.29594 8.29875 7.5 9.28312 7.5H20.7169C21.7022 7.5 22.5 8.29594 22.5 9.27844V20.7206ZM15 0C6.71531 0 0 6.71531 0 15C0 23.2837 6.71531 30 15 30C23.2847 30 30 23.2837 30 15C30 6.71531 23.2847 0 15 0ZM19.5804 15.0171C19.5804 17.5268 17.5339 19.5696 15.0176 19.5696C12.5014 19.5696 10.4548 17.5268 10.4548 15.0171C10.4548 14.6008 10.5111 14.1967 10.617 13.8133H9.21356V20.3364C9.21356 20.568 9.40106 20.7555 9.63263 20.7555H20.4017C20.6342 20.7555 20.8217 20.568 20.8217 20.3364V13.8133H19.4183C19.5242 14.1967 19.5804 14.6008 19.5804 15.0171Z" fill="#BDC4CD"/></svg> },
               { icon: <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M22.5 15.5662C22.5 16.7803 22.35 17.9944 22.35 17.9944C22.35 17.9944 22.2038 19.0275 21.7537 19.4831C21.1838 20.0803 20.5444 20.0831 20.2509 20.1178C18.1519 20.2697 15 20.2744 15 20.2744C15 20.2744 11.1 20.2388 9.9 20.1244C9.56625 20.0616 8.81625 20.0803 8.24625 19.4831C7.79625 19.0275 7.65 17.9944 7.65 17.9944C7.65 17.9944 7.5 16.7803 7.5 15.5662V14.4281C7.5 13.2141 7.65 12.0009 7.65 12.0009C7.65 12.0009 7.79625 10.9669 8.24625 10.5113C8.81625 9.91406 9.45562 9.91125 9.74906 9.87656C11.8481 9.72469 14.9972 9.72469 14.9972 9.72469H15.0028C15.0028 9.72469 18.1519 9.72469 20.2509 9.87656C20.5444 9.91125 21.1838 9.91406 21.7537 10.5113C22.2038 10.9669 22.35 12.0009 22.35 12.0009C22.35 12.0009 22.5 13.2141 22.5 14.4281V15.5662ZM15 0C6.71531 0 0 6.71531 0 15C0 23.2837 6.71531 30 15 30C23.2847 30 30 23.2837 30 15C30 6.71531 23.2847 0 15 0ZM13.4514 16.9453L17.5042 14.8453L13.4505 12.7303L13.4514 16.9453Z" fill="#BDC4CD"/></svg> }
             ].map((social, index) => (
@@ -207,57 +207,57 @@ const Footer = () => {
         </motion.div>
 
         {/* About */}
-        <motion.div className="space-y-2" variants={itemVariants}>
-          <h3 className="font-semibold">About</h3>
+        <motion.div className="space-y-2  text-center" variants={itemVariants}>
+          <h3 className="font-semibold text-base sm:text-lg">About</h3>
           <ul className="text-sm space-y-1 text-gray-500">
             {['About Us', 'Find store', 'Categories', 'Blogs'].map((item, i) => (
               <motion.li key={i} whileHover={{ x: 5 }}>
-                <a href="" className="hover:text-blue-600 transition-colors">{item}</a>
+                <a href="" className="hover:text-blue-600 transition-colors block">{item}</a>
               </motion.li>
             ))}
           </ul>
         </motion.div>
 
         {/* Partnership */}
-        <motion.div className="space-y-2" variants={itemVariants}>
-          <h3 className="font-semibold">Partnership</h3>
+        <motion.div className="space-y-2 text-center" variants={itemVariants}>
+          <h3 className="font-semibold text-base sm:text-lg">Partnership</h3>
           <ul className="text-sm space-y-1 text-gray-500">
             {['About Us', 'Find store', 'Categories', 'Blogs'].map((item, i) => (
               <motion.li key={i} whileHover={{ x: 5 }}>
-                <a href="" className="hover:text-blue-600 transition-colors">{item}</a>
+                <a href="" className="hover:text-blue-600 transition-colors block">{item}</a>
               </motion.li>
             ))}
           </ul>
         </motion.div>
 
         {/* Information */}
-        <motion.div className="space-y-2" variants={itemVariants}>
-          <h3 className="font-semibold">Information</h3>
+        <motion.div className="space-y-2 text-center" variants={itemVariants}>
+          <h3 className="font-semibold text-base sm:text-lg">Information</h3>
           <ul className="text-sm space-y-1 text-gray-500">
             {['Help Center', 'Money Refund', 'Shopping', 'Contact us'].map((item, i) => (
               <motion.li key={i} whileHover={{ x: 5 }}>
-                <a href="" className="hover:text-blue-600 transition-colors">{item}</a>
+                <a href="" className="hover:text-blue-600 transition-colors block">{item}</a>
               </motion.li>
             ))}
           </ul>
         </motion.div>
 
         {/* For users */}
-        <motion.div className="space-y-2" variants={itemVariants}>
-          <h3 className="font-semibold">For users</h3>
+        <motion.div className="space-y-2 text-center" variants={itemVariants}>
+          <h3 className="font-semibold text-base sm:text-lg">For users</h3>
           <ul className="text-sm space-y-1 text-gray-500">
             {['Login', 'Register', 'Settings', 'My Orders'].map((item, i) => (
               <motion.li key={i} whileHover={{ x: 5 }}>
-                <a href="" className="hover:text-blue-600 transition-colors">{item}</a>
+                <a href="" className="hover:text-blue-600 transition-colors block">{item}</a>
               </motion.li>
             ))}
           </ul>
         </motion.div>
 
         {/* Get app */}
-        <motion.div className="space-y-3" variants={itemVariants}>
-          <h3 className="font-semibold">Get app</h3>
-          <div className="flex flex-col space-y-2">
+        <motion.div className="space-y-3 text-center col-span-full sm:col-span-1 lg:col-span-1" variants={itemVariants}>
+          <h3 className="font-semibold text-base sm:text-lg">Get app</h3>
+          <div className="flex flex-col space-y-2 items-center">
             <motion.div 
               className="cursor-pointer"
               whileHover={{ y: -3 }}
@@ -326,7 +326,7 @@ const Footer = () => {
 
       {/* Bottom bar */}
       <motion.div 
-        className="border-t mt-8 pt-4 text-sm text-gray-500 flex justify-between items-center"
+        className="border-t mt-8 pt-4 text-sm text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-3"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
@@ -341,3 +341,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+
+

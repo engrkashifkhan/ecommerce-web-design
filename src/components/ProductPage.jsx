@@ -9,6 +9,7 @@ import {
 } from "../data/products";
 import ProductList from "../components/ProductList";
 import ProductDetail from "../components/ProductDetail";
+import { FaFilter, FaTimes, FaSearch, FaChevronLeft } from "react-icons/fa";
 
 const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, renderStars }) => {
   const location = useLocation();
@@ -20,9 +21,10 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
   const [selectedRating, setSelectedRating] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showFilters, setShowFilters] = useState(false);
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
   const productsPerPage = 6;
 
-  // Initialize search from URL
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const searchParam = queryParams.get('search');
@@ -55,11 +57,13 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
   const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  
   const nextPage = () => {
     if (currentPage < Math.ceil(filteredProducts.length / productsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
+  
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -82,6 +86,14 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
     }
   };
 
+  const clearAllFilters = () => {
+    setSelectedCategories([]);
+    setSelectedBrands([]);
+    setSelectedCondition("Any");
+    setSelectedRating(null);
+    setSearchQuery("");
+  };
+
   if (selectedProduct) {
     return (
       <ProductDetail
@@ -95,108 +107,298 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
   }
 
   return (
-    <div>
-      <div className="hidden lg:flex min-h-screen bg-gray-100 p-6 gap-6">
-        {/* Sidebar */}
-        <aside className="w-1/4 bg-white p-6 rounded shadow">
-          <h2 className="text-lg font-semibold mb-4">Filters</h2>
+    <div className="bg-gray-50 min-h-screen">
+      {/* Mobile Header */}
+      <div className="lg:hidden sticky top-0 z-30 bg-white shadow-sm p-4 flex items-center">
+        {showMobileSearch ? (
+          <div className="flex items-center w-full">
+            <button 
+              onClick={() => setShowMobileSearch(false)}
+              className="mr-2 text-gray-600"
+            >
+              <FaChevronLeft />
+            </button>
+            <div className="relative flex-1">
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <FaSearch className="absolute left-3 top-3 text-gray-400" />
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className="text-xl font-bold flex-1">Products</div>
+            <button 
+              onClick={() => setShowMobileSearch(true)}
+              className="p-2 mr-3 text-gray-600"
+            >
+              <FaSearch size={18} />
+            </button>
+            <button
+              onClick={() => setShowFilters(true)}
+              className="p-2 bg-blue-600 text-white rounded-lg"
+            >
+              <FaFilter size={18} />
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* Mobile Filter Sidebar */}
+      {showFilters && (
+        <div className="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden">
+          <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white p-6 overflow-y-auto animate-slide-in">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl font-bold">Filters</h2>
+              <div className="flex items-center">
+                <button 
+                  onClick={clearAllFilters}
+                  className="text-blue-600 mr-4 text-sm"
+                >
+                  Clear All
+                </button>
+                <button 
+                  onClick={() => setShowFilters(false)}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  <FaTimes size={24} />
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Search */}
+            <div className="mb-6 lg:hidden">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <FaSearch className="absolute left-3 top-3 text-gray-400" />
+              </div>
+            </div>
+
+            {/* Category Filter */}
+            <div className="mb-6">
+             <div className="flex justify-between items-center mb-3">
+               <div>
+                <h3 className="font-semibold mb-3 text-lg">Category</h3>
+              </div>
+              <div>
+                 <button 
+                  onClick={clearAllFilters}
+                  className="text-blue-600 mr-4 text-sm"
+                >
+                  Clear All
+                </button>
+              </div>
+             </div>
+              <div className="flex flex-wrap gap-2">
+                {categories.map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => handleCheckbox(item, selectedCategories, setSelectedCategories)}
+                    className={`px-3 py-1 rounded-full text-sm ${
+                      selectedCategories.includes(item)
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-200 text-gray-700"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Brand Filter */}
+            <div className="mb-6">
+              <h3 className="font-semibold mb-3 text-lg">Brands</h3>
+              <div className="flex flex-wrap gap-2">
+                {brands.map((brand) => (
+                  <button
+                    key={brand}
+                    onClick={() => handleCheckbox(brand, selectedBrands, setSelectedBrands)}
+                    className={`px-3 py-1 rounded-full text-sm ${
+                      selectedBrands.includes(brand)
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-200 text-gray-700"
+                    }`}
+                  >
+                    {brand}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Condition Filter */}
+            <div className="mb-6">
+              <h3 className="font-semibold mb-3 text-lg">Condition</h3>
+              <div className="flex flex-wrap gap-2">
+                {conditions.map((cond) => (
+                  <button
+                    key={cond}
+                    onClick={() => setSelectedCondition(cond)}
+                    className={`px-3 py-1 rounded-full text-sm ${
+                      selectedCondition === cond
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-200 text-gray-700"
+                    }`}
+                  >
+                    {cond}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Rating Filter */}
+            <div className="mb-6">
+              <h3 className="font-semibold mb-3 text-lg">Minimum Rating</h3>
+              <div className="flex flex-wrap gap-2">
+                {ratingOptions.map((rating) => (
+                  <button
+                    key={rating}
+                    onClick={() => setSelectedRating(rating)}
+                    className={`px-3 py-1 rounded-full text-sm ${
+                      selectedRating === rating
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-200 text-gray-700"
+                    }`}
+                  >
+                    {rating.toFixed(1)}+
+                  </button>
+                ))}
+                <button
+                  onClick={() => setSelectedRating(null)}
+                  className={`px-3 py-1 rounded-full text-sm ${
+                    selectedRating === null
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-200 text-gray-700"
+                  }`}
+                >
+                  Any Rating
+                </button>
+              </div>
+            </div>
+            
+            <button
+              onClick={() => setShowFilters(false)}
+              className="w-full bg-blue-600 text-white py-3 rounded-lg mt-4 shadow-md"
+            >
+              Show {filteredProducts.length} Products
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div className="flex flex-col lg:flex-row p-4 sm:p-6 gap-6">
+        {/* Desktop Sidebar (without search field) */}
+        <aside className="hidden lg:block w-full lg:w-1/4 bg-white p-6 rounded-xl shadow-sm">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-bold">Filters</h2>
+            <button 
+              onClick={clearAllFilters}
+              className="text-blue-600 text-sm"
+            >
+              Clear all
+            </button>
+          </div>
+
+          {/* Removed search field from desktop sidebar */}
 
           {/* Category Filter */}
-          <div className="mb-4">
-            <h3 className="font-semibold mb-2">Category</h3>
-            <ul className="space-y-1 text-sm text-gray-700">
+          <div className="mb-6">
+            <h3 className="font-semibold mb-3 text-lg">Category</h3>
+            <div className="flex flex-wrap gap-2">
               {categories.map((item) => (
-                <li key={item}>
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      checked={selectedCategories.includes(item)}
-                      onChange={() =>
-                        handleCheckbox(item, selectedCategories, setSelectedCategories)
-                      }
-                      className="mr-2"
-                    />
-                    {item}
-                  </label>
-                </li>
+                <button
+                  key={item}
+                  onClick={() => handleCheckbox(item, selectedCategories, setSelectedCategories)}
+                  className={`px-3 py-1 rounded-full text-sm ${
+                    selectedCategories.includes(item)
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-200 text-gray-700"
+                  }`}
+                >
+                  {item}
+                </button>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Brand Filter */}
-          <div className="mb-4">
-            <h3 className="font-semibold mb-2">Brands</h3>
-            <ul className="space-y-1 text-sm text-gray-700">
+          <div className="mb-6">
+            <h3 className="font-semibold mb-3 text-lg">Brands</h3>
+            <div className="flex flex-wrap gap-2">
               {brands.map((brand) => (
-                <li key={brand}>
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      checked={selectedBrands.includes(brand)}
-                      onChange={() =>
-                        handleCheckbox(brand, selectedBrands, setSelectedBrands)
-                      }
-                      className="mr-2"
-                    />
-                    {brand}
-                  </label>
-                </li>
+                <button
+                  key={brand}
+                  onClick={() => handleCheckbox(brand, selectedBrands, setSelectedBrands)}
+                  className={`px-3 py-1 rounded-full text-sm ${
+                    selectedBrands.includes(brand)
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-200 text-gray-700"
+                  }`}
+                >
+                  {brand}
+                </button>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Condition Filter */}
-          <div className="mb-4">
-            <h3 className="font-semibold mb-2">Condition</h3>
-            <ul className="space-y-1 text-sm text-gray-700">
+          <div className="mb-6">
+            <h3 className="font-semibold mb-3 text-lg">Condition</h3>
+            <div className="flex flex-wrap gap-2">
               {conditions.map((cond) => (
-                <li key={cond}>
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      name="condition"
-                      checked={selectedCondition === cond}
-                      onChange={() => setSelectedCondition(cond)}
-                      className="mr-2"
-                    />
-                    {cond}
-                  </label>
-                </li>
+                <button
+                  key={cond}
+                  onClick={() => setSelectedCondition(cond)}
+                  className={`px-3 py-1 rounded-full text-sm ${
+                    selectedCondition === cond
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-200 text-gray-700"
+                  }`}
+                >
+                  {cond}
+                </button>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Rating Filter */}
-          <div className="mb-4">
-            <h3 className="font-semibold mb-2">Minimum Rating</h3>
-            <ul className="space-y-1 text-sm text-gray-700">
+          <div className="mb-6">
+            <h3 className="font-semibold mb-3 text-lg">Minimum Rating</h3>
+            <div className="flex flex-wrap gap-2">
               {ratingOptions.map((rating) => (
-                <li key={rating}>
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      name="rating"
-                      checked={selectedRating === rating}
-                      onChange={() => setSelectedRating(rating)}
-                      className="mr-2"
-                    />
-                    {rating.toFixed(1)}+
-                  </label>
-                </li>
+                <button
+                  key={rating}
+                  onClick={() => setSelectedRating(rating)}
+                  className={`px-3 py-1 rounded-full text-sm ${
+                    selectedRating === rating
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-200 text-gray-700"
+                  }`}
+                >
+                  {rating.toFixed(1)}+
+                </button>
               ))}
-              <li>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="rating"
-                    checked={selectedRating === null}
-                    onChange={() => setSelectedRating(null)}
-                    className="mr-2"
-                  />
-                  Any Rating
-                </label>
-              </li>
-            </ul>
+              <button
+                onClick={() => setSelectedRating(null)}
+                className={`px-3 py-1 rounded-full text-sm ${
+                  selectedRating === null
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-200 text-gray-700"
+                }`}
+              >
+                Any Rating
+              </button>
+            </div>
           </div>
         </aside>
 
@@ -219,45 +421,63 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
       </div>
 
       {/* Pagination */}
-      <div className="flex justify-center items-center my-6 space-x-2">
-        <button
-          onClick={prevPage}
-          disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded disabled:opacity-50"
-        >
-          Prev
-        </button>
-
-        {Array.from(
-          { length: Math.ceil(filteredProducts.length / productsPerPage) },
-          (_, i) => (
+      {filteredProducts.length > 0 && (
+        <div className="flex justify-center items-center my-6 px-4">
+          <div className="flex flex-wrap justify-center gap-1">
             <button
-              key={i + 1}
-              onClick={() => paginate(i + 1)}
-              className={`px-4 py-2 rounded ${
-                currentPage === i + 1
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 hover:bg-gray-300"
-              }`}
+              onClick={prevPage}
+              disabled={currentPage === 1}
+              className="px-3 py-2 bg-white border rounded-lg shadow-sm hover:bg-gray-50 disabled:opacity-30 text-sm"
             >
-              {i + 1}
+              Previous
             </button>
-          )
-        )}
 
-        <button
-          onClick={nextPage}
-          disabled={currentPage === Math.ceil(filteredProducts.length / productsPerPage)}
-          className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded disabled:opacity-50"
-        >
-          Next
-        </button>
-      </div>
+            {Array.from(
+              { length: Math.ceil(filteredProducts.length / productsPerPage) },
+              (_, i) => (
+                <button
+                  key={i + 1}
+                  onClick={() => paginate(i + 1)}
+                  className={`px-3 py-2 rounded-lg text-sm ${
+                    currentPage === i + 1
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "bg-white border shadow-sm hover:bg-gray-50"
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              )
+            )}
+
+            <button
+              onClick={nextPage}
+              disabled={currentPage === Math.ceil(filteredProducts.length / productsPerPage)}
+              className="px-3 py-2 bg-white border rounded-lg shadow-sm hover:bg-gray-50 disabled:opacity-30 text-sm"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default ProductPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
