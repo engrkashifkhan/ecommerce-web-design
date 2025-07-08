@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ArrowLeft } from "react-bootstrap-icons";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
 
 const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars }) => {
   const [activeTab, setActiveTab] = useState("description");
@@ -111,7 +112,7 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
               <motion.img
                 src={product.image}
                 alt={product.title}
-                className="w-full max-w-md md:w-[80%] rounded-lg object-cover mb-4 max-h-[200px] sm:max-h-[250px] md:max-h-[300px]"
+                className="w-full max-w-md md:w-[80%] rounded-lg object-cover mb-4 h-[300px]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
@@ -126,7 +127,9 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
                 {[...Array(5)].map((_, i) => (
                   <motion.div 
                     key={i} 
-                    className="w-14 h-14 sm:w-16 sm:h-16 border rounded cursor-pointer flex-shrink-0"
+                    className={`w-14 h-14 sm:w-16 sm:h-16 border rounded cursor-pointer flex-shrink-0 ${
+                      selectedImage === i ? "border-blue-500 border-2" : ""
+                    }`}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     variants={itemVariants}
@@ -191,19 +194,19 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
             <motion.div className="flex flex-col sm:flex-row gap-3">
               <motion.button
                 onClick={() => handleAddToCart(product)}
-                className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 sm:px-6 rounded-md"
+                className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 sm:px-6 rounded-md flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Add to Cart
+                <FaShoppingCart /> Add to Cart
               </motion.button>
               <motion.button
                 onClick={() => handleAddToWishList(product)}
-                className="bg-sky-500 hover:bg-sky-700 text-black py-2 px-4 sm:px-6 rounded-md"
+                className="bg-sky-500 hover:bg-sky-700 text-black py-2 px-4 sm:px-6 rounded-md flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                WishList
+                <FaHeart className="text-red-500" /> WishList
               </motion.button>
             </motion.div>
           </motion.div>
@@ -243,7 +246,7 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
               {activeTab === "description" && (
                 <div>
                   <p className="mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    {product.description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}
                   </p>
                   <div className="overflow-x-auto">
                     <table className="table-auto border w-full text-sm mb-4 min-w-[500px]">

@@ -85,7 +85,7 @@ const HomePage = () => {
     { id: 9, price: "$21.30", description: "Wireless Mouse", img: "https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
     { id: 10, price: "$16.80", description: "Mechanical Keyboard", img: "https://tse3.mm.bing.net/th?id=OIP.ylpv4IIPqdWgVpCqAUx10QAAAA&pid=Api&P=0&h=220" },
     { id: 11, price: "$13.20", description: "HD Webcam", img: "https://tse1.mm.bing.net/th?id=OIP.rtmbe0_H-BtUqlQsBv3zVgHaHa&pid=Api&P=0&h=220" },
-    { id: 12, price: "$17.60", description: "External SSD", img: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" },
+    { id: 12, price: "$17.60", description: "External SSD", img: "https://tse4.mm.bing.net/th/id/OIP.EoPYBVZHbnt_-fZCr2L4UwHaFj?pid=Api&P=0&h=220" },
   ];
 
   const services = [
@@ -664,3 +664,5 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+

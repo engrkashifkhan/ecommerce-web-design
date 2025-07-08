@@ -18,7 +18,8 @@ const Header = ({
   onWishlistClick
 }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [showCategories, setShowCategories] = useState(false);
+  const [showMobileCategories, setShowMobileCategories] = useState(false);
+  const [showDesktopCategories, setShowDesktopCategories] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState({
     code: 'us',
     name: 'United States',
@@ -137,13 +138,18 @@ const Header = ({
   const categoriesRef = useRef(null);
   const countryRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const mobileCategoriesRef = useRef(null);
 
   const toggleDropdown = (name) => {
     setOpenDropdown((prev) => (prev === name ? null : name));
   };
 
-  const toggleCategories = () => {
-    setShowCategories((prev) => !prev);
+  const toggleMobileCategories = () => {
+    setShowMobileCategories((prev) => !prev);
+  };
+
+  const toggleDesktopCategories = () => {
+    setShowDesktopCategories((prev) => !prev);
   };
 
   const toggleCountryDropdown = () => {
@@ -152,7 +158,8 @@ const Header = ({
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
-    setShowCategories(false);
+    setShowMobileCategories(false);
+    setShowDesktopCategories(false);
   };
 
   const handleCountrySelect = (country) => {
@@ -181,6 +188,7 @@ const Header = ({
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
     document.body.style.overflow = 'auto';
+    setShowMobileCategories(false);
   };
 
   useEffect(() => {
@@ -189,7 +197,11 @@ const Header = ({
         setOpenDropdown(null);
       }
       if (categoriesRef.current && !categoriesRef.current.contains(event.target)) {
-        setShowCategories(false);
+        setShowDesktopCategories(false);
+      }
+      if (mobileCategoriesRef.current && !mobileCategoriesRef.current.contains(event.target) && 
+          !event.target.closest('.mobile-categories-toggle')) {
+        setShowMobileCategories(false);
       }
       if (countryRef.current && !countryRef.current.contains(event.target)) {
         setShowCountryDropdown(false);
@@ -433,16 +445,17 @@ const Header = ({
                 {/* Categories */}
                 <div className="mt-4">
                   <button 
-                    onClick={toggleCategories}
-                    className="w-full flex justify-between items-center p-2 hover:bg-gray-100 rounded-md"
+                    onClick={toggleMobileCategories}
+                    className="mobile-categories-toggle w-full flex justify-between items-center p-2 hover:bg-gray-100 rounded-md"
                   >
                     <span className="font-medium">Categories</span>
-                    <span>{showCategories ? '▲' : '▼'}</span>
+                    <span>{showMobileCategories ? '▲' : '▼'}</span>
                   </button>
                   
                   <AnimatePresence>
-                    {showCategories && (
+                    {showMobileCategories && (
                       <motion.div 
+                        ref={mobileCategoriesRef}
                         className="mt-2 bg-gray-50 rounded-md"
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
@@ -736,7 +749,7 @@ const Header = ({
         <ul className="flex space-x-6 text-gray-700 text-sm font-medium relative" ref={categoriesRef}>
           <li>
             <motion.button 
-              onClick={toggleCategories} 
+              onClick={toggleDesktopCategories} 
               className="flex items-center gap-2 hover:text-blue-600"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -751,7 +764,7 @@ const Header = ({
               <span className="ml-1">▾</span>
             </motion.button>
             <AnimatePresence>
-              {showCategories && (
+              {showDesktopCategories && (
                 <motion.div 
                   className="absolute top-10 left-0 bg-white shadow-lg border rounded-md z-50 w-64 p-4"
                   variants={dropdownVariants}

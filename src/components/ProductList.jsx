@@ -178,20 +178,26 @@ const ProductList = ({
                 view === "list" ? "flex flex-col sm:flex-row" : "flex flex-col"
               }`}
             >
-              <div className={`relative ${view === "list" ? "sm:w-1/3" : ""}`}>
+              <div 
+                className={`
+                  relative overflow-hidden
+                  ${view === "list" 
+                    ? "h-48 sm:h-auto sm:w-1/3" 
+                    : "h-[180px]"}  // Fixed height for grid view
+                `}
+              >
                 <motion.img
                   src={product.image}
                   alt={product.title}
-                  className={`w-full object-cover ${
-                    view === "list" 
-                      ? "h-48 sm:h-full" 
-                      : "h-48 sm:h-56"
-                  }`}
+                  className={`
+                    w-full h-full object-cover
+                    ${view === "list" ? "sm:absolute sm:inset-0" : ""}
+                  `}
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.3 }}
                 />
                 <button
-                  className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md"
+                  className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md z-10"
                   onClick={() => {
                     addToWishList(product);
                     showNotification(`${product.title} saved!`, 'success');
@@ -262,16 +268,3 @@ const ProductList = ({
 };
 
 export default ProductList;
-
-
-
-
-
-
-
-
-
-
-
-
-
