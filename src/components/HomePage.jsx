@@ -372,13 +372,23 @@ const HomePage = () => {
                   boxShadow: "0px 10px 25px rgba(0,0,0,0.1)"
                 }}
               >
-                <div className="bg-gray-100 rounded-xl p-4 mb-3">
+                {/* <div className="bg-gray-100 rounded-xl p-4 mb-3">
                   <img
                     src={item.img}
                     alt={item.name}
                     className="mx-auto h-20 object-contain"
                   />
-                </div>
+                </div> */}
+
+
+                <div className="bg-gray-100 rounded-xl p-4 mb-3 h-32 flex items-center justify-center">
+  <img
+    src={item.img}
+    alt={item.name}
+    className="w-20 h-20 object-contain"
+  />
+</div>
+
                 <p className="font-medium text-gray-800">{item.name}</p>
                 <p className="text-red-500 font-bold mt-2">{item.discount}</p>
               </motion.div>
@@ -436,18 +446,19 @@ const HomePage = () => {
                   }}
                 >
                   <div className="flex items-center justify-between">
-                    <div className="text-left">
-                      <p className="font-medium text-gray-800">{item.name}</p>
-                      <p className="text-gray-500 text-sm mt-1">{item.price}</p>
-                    </div>
-                    <div className="bg-gray-100 p-2 rounded-lg">
-                      <img
-                        src={item.img}
-                        alt={item.name}
-                        className="h-14 w-14 object-contain"
-                      />
-                    </div>
-                  </div>
+  <div className="text-left">
+    <p className="font-medium text-gray-800">{item.name}</p>
+    <p className="text-gray-500 text-sm mt-1">{item.price}</p>
+  </div>
+  <div className="bg-gray-100 p-2 rounded-lg h-16 w-16 flex items-center justify-center">
+    <img
+      src={item.img}
+      alt={item.name}
+      className="h-12 w-12 object-contain"
+    />
+  </div>
+</div>
+
                 </motion.div>
               ))}
             </motion.div>
@@ -531,25 +542,26 @@ const HomePage = () => {
         >
           {recommendedItems.map((item) => (
             <motion.div 
-              key={item.id} 
-              className="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition-all"
-              onClick={handleClick}
-              variants={cardAnimation}
-              whileHover={{ 
-                y: -8,
-                boxShadow: "0px 15px 30px rgba(0,0,0,0.12)"
-              }}
-            >
-              <div className="bg-gray-100 rounded-xl p-4 mb-3">
-                <img 
-                  src={item.img} 
-                  alt={`Item ${item.id}`} 
-                  className="mx-auto h-32 object-contain" 
-                />
-              </div>
-              <p className="font-bold text-gray-800">{item.price}</p>
-              <p className="text-gray-600 mt-1 text-sm">{item.description}</p>
-            </motion.div>
+  key={item.id} 
+  className="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition-all"
+  onClick={handleClick}
+  variants={cardAnimation}
+  whileHover={{ 
+    y: -8,
+    boxShadow: "0px 15px 30px rgba(0,0,0,0.12)"
+  }}
+>
+  <div className="bg-gray-100 rounded-xl h-36 flex items-center justify-center mb-3">
+    <img 
+      src={item.img} 
+      alt={`Item ${item.id}`} 
+      className="h-28 w-28 object-contain" 
+    />
+  </div>
+  <p className="font-bold text-gray-800">{item.price}</p>
+  <p className="text-gray-600 mt-1 text-sm">{item.description}</p>
+</motion.div>
+
           ))}
         </motion.div>
       </motion.div>
@@ -664,5 +676,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
 
