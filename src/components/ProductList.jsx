@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid3x3GapFill, ListUl } from "react-bootstrap-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaHeart, FaShoppingCart, FaEye } from "react-icons/fa";
@@ -24,6 +24,13 @@ const ProductList = ({
     setTimeout(() => setNotification({ show: false, message: '', type: '' }), 3000);
   };
 
+
+   useEffect(()=> {
+      // Scroll to top on component mount
+      window.scrollTo(0, 0);
+  
+    }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -36,12 +43,12 @@ const ProductList = ({
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    show: { 
-      y: 0, 
+    show: {
+      y: 0,
       opacity: 1,
-      transition: { 
-        type: "spring", 
-        stiffness: 120 
+      transition: {
+        type: "spring",
+        stiffness: 120
       }
     },
     hover: {
@@ -52,7 +59,7 @@ const ProductList = ({
   };
 
   const buttonVariants = {
-    hover: { 
+    hover: {
       scale: 1.05,
       backgroundColor: "#f3f4f6"
     },
@@ -71,11 +78,10 @@ const ProductList = ({
       <AnimatePresence>
         {notification.show && (
           <motion.div
-            className={`fixed top-4 right-4 px-4 py-2 rounded-md shadow-lg z-[100] ${
-              notification.type === 'success' 
-                ? 'bg-green-500 text-white' 
+            className={`fixed top-4 right-4 px-4 py-2 rounded-md shadow-lg z-[100] ${notification.type === 'success'
+                ? 'bg-green-500 text-white'
                 : 'bg-red-500 text-white'
-            }`}
+              }`}
             variants={notificationVariants}
             initial="hidden"
             animate="visible"
@@ -98,7 +104,7 @@ const ProductList = ({
       </AnimatePresence>
 
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
-        <motion.p 
+        <motion.p
           className="text-gray-600 text-sm sm:text-base"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -114,9 +120,8 @@ const ProductList = ({
             whileHover="hover"
             whileTap="tap"
             onClick={() => setView("list")}
-            className={`px-3 py-2 rounded-lg flex items-center text-xs sm:text-sm ${
-              view === "list" ? "bg-white shadow" : "bg-transparent"
-            }`}
+            className={`px-3 py-2 rounded-lg flex items-center text-xs sm:text-sm ${view === "list" ? "bg-white shadow" : "bg-transparent"
+              }`}
           >
             <ListUl className="mr-1 sm:mr-2" /> List
           </motion.button>
@@ -125,9 +130,8 @@ const ProductList = ({
             whileHover="hover"
             whileTap="tap"
             onClick={() => setView("grid")}
-            className={`px-3 py-2 rounded-lg flex items-center text-xs sm:text-sm ${
-              view === "grid" ? "bg-white shadow" : "bg-transparent"
-            }`}
+            className={`px-3 py-2 rounded-lg flex items-center text-xs sm:text-sm ${view === "grid" ? "bg-white shadow" : "bg-transparent"
+              }`}
           >
             <Grid3x3GapFill className="mr-1 sm:mr-2" /> Grid
           </motion.button>
@@ -138,14 +142,13 @@ const ProductList = ({
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className={`${
-          view === "grid" 
-            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" 
+        className={`${view === "grid"
+            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
             : "flex flex-col gap-4"
-        }`}
+          }`}
       >
         {currentProducts.length === 0 ? (
-          <motion.div 
+          <motion.div
             className="col-span-full flex flex-col items-center justify-center py-12"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -174,15 +177,14 @@ const ProductList = ({
               key={product.id}
               variants={itemVariants}
               whileHover="hover"
-              className={`bg-white rounded-xl shadow-sm overflow-hidden ${
-                view === "list" ? "flex flex-col sm:flex-row" : "flex flex-col"
-              }`}
+              className={`bg-white rounded-xl shadow-sm overflow-hidden ${view === "list" ? "flex flex-col sm:flex-row" : "flex flex-col"
+                }`}
             >
-              <div 
+              <div
                 className={`
                   relative overflow-hidden
-                  ${view === "list" 
-                    ? "h-48 sm:h-auto sm:w-1/3" 
+                  ${view === "list"
+                    ? "h-48 sm:h-auto sm:w-1/3"
                     : "h-[180px]"}  // Fixed height for grid view
                 `}
               >
@@ -206,22 +208,21 @@ const ProductList = ({
                   <FaHeart className="text-red-500" />
                 </button>
               </div>
-              
-              <div className={`p-4 flex flex-col justify-between ${
-                view === "list" ? "sm:w-2/3" : "flex-1"
-              }`}>
+
+              <div className={`p-4 flex flex-col justify-between ${view === "list" ? "sm:w-2/3" : "flex-1"
+                }`}>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1 line-clamp-1">
                     {product.title}
                   </h3>
-                  
+
                   <div className="flex items-center mb-2">
                     <div className="flex mr-2">
                       {renderStars(product.rating)}
                     </div>
                     <span className="text-gray-500 text-sm">({product.rating.toFixed(1)})</span>
                   </div>
-                  
+
                   <div className="flex items-center mb-4">
                     <span className="text-lg font-bold text-red-600 mr-2">
                       {product.price}
@@ -233,10 +234,9 @@ const ProductList = ({
                     )}
                   </div>
                 </div>
-                
-                <div className={`flex gap-2 ${
-                  view === "list" ? "sm:justify-start" : "justify-between"
-                }`}>
+
+                <div className={`flex gap-2 ${view === "list" ? "sm:justify-start" : "justify-between"
+                  }`}>
                   <motion.button
                     className="flex-1 flex items-center justify-center gap-2 bg-gray-100 text-gray-700 py-2 rounded-lg text-sm"
                     onClick={() => handleViewDetails(product)}
@@ -245,7 +245,7 @@ const ProductList = ({
                   >
                     <FaEye /> Details
                   </motion.button>
-                  
+
                   <motion.button
                     className="flex-1 flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded-lg text-sm"
                     onClick={() => {

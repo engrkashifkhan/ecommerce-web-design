@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const WishListView = ({ 
-  wishlistItems, 
-  removeFromWishList, 
+const WishListView = ({
+  wishlistItems,
+  removeFromWishList,
   addToCart,
   onClose,
   onViewProduct
@@ -23,13 +23,13 @@ const WishListView = ({
 
   const modal = {
     hidden: { y: 50, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { 
-        type: 'spring', 
-        damping: 25, 
-        stiffness: 300 
+      transition: {
+        type: 'spring',
+        damping: 25,
+        stiffness: 300
       }
     },
     exit: { y: 50, opacity: 0 }
@@ -42,21 +42,21 @@ const WishListView = ({
       opacity: 1,
       transition: { delay: i * 0.05 }
     }),
-    exit: { 
-      x: 20, 
+    exit: {
+      x: 20,
       opacity: 0,
-      transition: { duration: 0.2 } 
+      transition: { duration: 0.2 }
     }
   };
 
   const emptyStateAnimation = {
     hidden: { scale: 0.9, opacity: 0 },
-    visible: { 
-      scale: 1, 
+    visible: {
+      scale: 1,
       opacity: 1,
-      transition: { 
-        type: 'spring', 
-        stiffness: 300 
+      transition: {
+        type: 'spring',
+        stiffness: 300
       }
     }
   };
@@ -75,8 +75,8 @@ const WishListView = ({
           <motion.div
             className={`fixed z-[100] px-4 py-2 rounded-md shadow-lg
               top-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-auto
-              ${notification.type === 'success' 
-                ? 'bg-green-500 text-white' 
+              ${notification.type === 'success'
+                ? 'bg-green-500 text-white'
                 : 'bg-red-500 text-white'}`}
             variants={notificationVariants}
             initial="hidden"
@@ -117,7 +117,7 @@ const WishListView = ({
             exit="exit"
           >
             <div className="flex justify-between items-center mb-4">
-              <motion.h2 
+              <motion.h2
                 className="text-xl sm:text-2xl font-bold"
                 initial={{ y: -10 }}
                 animate={{ y: 0 }}
@@ -125,7 +125,7 @@ const WishListView = ({
               >
                 Your Wishlist
               </motion.h2>
-              <motion.button 
+              <motion.button
                 onClick={onClose}
                 className="text-gray-500 hover:text-gray-700 text-2xl"
                 whileHover={{ scale: 1.2 }}
@@ -135,14 +135,14 @@ const WishListView = ({
                 &times;
               </motion.button>
             </div>
-            
+
             {wishlistItems.length === 0 ? (
-              <motion.div 
+              <motion.div
                 className="text-center py-8 sm:py-10"
                 variants={emptyStateAnimation}
               >
                 <p className="text-gray-500 text-base sm:text-lg">Your wishlist is empty</p>
-                <motion.button 
+                <motion.button
                   onClick={onClose}
                   className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm sm:text-base"
                   whileHover={{ scale: 1.05 }}
@@ -155,7 +155,7 @@ const WishListView = ({
               <div className="space-y-3 sm:space-y-4">
                 <AnimatePresence>
                   {wishlistItems.map((item, index) => (
-                    <motion.div 
+                    <motion.div
                       key={item.id}
                       className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 border rounded-lg"
                       variants={itemAnimation}
@@ -167,9 +167,9 @@ const WishListView = ({
                       whileHover={{ y: -5, boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
                     >
                       <div className="flex items-center space-x-3 sm:space-x-4 w-full sm:w-auto">
-                        <motion.img 
-                          src={item.image} 
-                          alt={item.title} 
+                        <motion.img
+                          src={item.image}
+                          alt={item.title}
                           className="w-16 h-16 sm:w-20 sm:h-20 object-contain flex-shrink-0"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
@@ -187,7 +187,7 @@ const WishListView = ({
                           </p>
                         </div>
                       </div>
-                      
+
                       <div className="flex flex-wrap gap-2 mt-3 sm:mt-0 w-full sm:w-auto justify-end">
                         <motion.button
                           onClick={() => onViewProduct(item)}
@@ -223,7 +223,7 @@ const WishListView = ({
                     </motion.div>
                   ))}
                 </AnimatePresence>
-                
+
                 <div className="mt-4 sm:mt-6 flex justify-end">
                   <motion.button
                     onClick={onClose}

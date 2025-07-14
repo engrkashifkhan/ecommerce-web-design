@@ -33,11 +33,14 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
     }
   }, [location.search]);
 
+
+
+
   const filteredProducts = allProducts.filter((product) => {
     const matchSearch = searchQuery
       ? product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.brand.toLowerCase().includes(searchQuery.toLowerCase())
+      product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.brand.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
 
     const matchCategory =
@@ -57,13 +60,13 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
   const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  
+
   const nextPage = () => {
     if (currentPage < Math.ceil(filteredProducts.length / productsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
-  
+
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -112,7 +115,7 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
       <div className="lg:hidden sticky top-0 z-30 bg-white shadow-sm p-4 flex items-center">
         {showMobileSearch ? (
           <div className="flex items-center w-full">
-            <button 
+            <button
               onClick={() => setShowMobileSearch(false)}
               className="mr-2 text-gray-600"
             >
@@ -132,7 +135,7 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
         ) : (
           <>
             <div className="text-xl font-bold flex-1">Products</div>
-            <button 
+            <button
               onClick={() => setShowMobileSearch(true)}
               className="p-2 mr-3 text-gray-600"
             >
@@ -155,13 +158,13 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-bold">Filters</h2>
               <div className="flex items-center">
-                <button 
+                <button
                   onClick={clearAllFilters}
                   className="text-blue-600 mr-4 text-sm"
                 >
                   Clear All
                 </button>
-                <button 
+                <button
                   onClick={() => setShowFilters(false)}
                   className="text-gray-500 hover:text-gray-700"
                 >
@@ -186,29 +189,28 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
 
             {/* Category Filter */}
             <div className="mb-6">
-             <div className="flex justify-between items-center mb-3">
-               <div>
-                <h3 className="font-semibold mb-3 text-lg">Category</h3>
+              <div className="flex justify-between items-center mb-3">
+                <div>
+                  <h3 className="font-semibold mb-3 text-lg">Category</h3>
+                </div>
+                <div>
+                  <button
+                    onClick={clearAllFilters}
+                    className="text-blue-600 mr-4 text-sm"
+                  >
+                    Clear All
+                  </button>
+                </div>
               </div>
-              <div>
-                 <button 
-                  onClick={clearAllFilters}
-                  className="text-blue-600 mr-4 text-sm"
-                >
-                  Clear All
-                </button>
-              </div>
-             </div>
               <div className="flex flex-wrap gap-2">
                 {categories.map((item) => (
                   <button
                     key={item}
                     onClick={() => handleCheckbox(item, selectedCategories, setSelectedCategories)}
-                    className={`px-3 py-1 rounded-full text-sm ${
-                      selectedCategories.includes(item)
+                    className={`px-3 py-1 rounded-full text-sm ${selectedCategories.includes(item)
                         ? "bg-blue-600 text-white"
                         : "bg-gray-200 text-gray-700"
-                    }`}
+                      }`}
                   >
                     {item}
                   </button>
@@ -224,11 +226,10 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
                   <button
                     key={brand}
                     onClick={() => handleCheckbox(brand, selectedBrands, setSelectedBrands)}
-                    className={`px-3 py-1 rounded-full text-sm ${
-                      selectedBrands.includes(brand)
+                    className={`px-3 py-1 rounded-full text-sm ${selectedBrands.includes(brand)
                         ? "bg-blue-600 text-white"
                         : "bg-gray-200 text-gray-700"
-                    }`}
+                      }`}
                   >
                     {brand}
                   </button>
@@ -244,11 +245,10 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
                   <button
                     key={cond}
                     onClick={() => setSelectedCondition(cond)}
-                    className={`px-3 py-1 rounded-full text-sm ${
-                      selectedCondition === cond
+                    className={`px-3 py-1 rounded-full text-sm ${selectedCondition === cond
                         ? "bg-blue-600 text-white"
                         : "bg-gray-200 text-gray-700"
-                    }`}
+                      }`}
                   >
                     {cond}
                   </button>
@@ -264,28 +264,26 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
                   <button
                     key={rating}
                     onClick={() => setSelectedRating(rating)}
-                    className={`px-3 py-1 rounded-full text-sm ${
-                      selectedRating === rating
+                    className={`px-3 py-1 rounded-full text-sm ${selectedRating === rating
                         ? "bg-blue-600 text-white"
                         : "bg-gray-200 text-gray-700"
-                    }`}
+                      }`}
                   >
                     {rating.toFixed(1)}+
                   </button>
                 ))}
                 <button
                   onClick={() => setSelectedRating(null)}
-                  className={`px-3 py-1 rounded-full text-sm ${
-                    selectedRating === null
+                  className={`px-3 py-1 rounded-full text-sm ${selectedRating === null
                       ? "bg-blue-600 text-white"
                       : "bg-gray-200 text-gray-700"
-                  }`}
+                    }`}
                 >
                   Any Rating
                 </button>
               </div>
             </div>
-            
+
             <button
               onClick={() => setShowFilters(false)}
               className="w-full bg-blue-600 text-white py-3 rounded-lg mt-4 shadow-md"
@@ -301,7 +299,7 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
         <aside className="hidden lg:block w-full lg:w-1/4 bg-white p-6 rounded-xl shadow-sm">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold">Filters</h2>
-            <button 
+            <button
               onClick={clearAllFilters}
               className="text-blue-600 text-sm"
             >
@@ -319,11 +317,10 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
                 <button
                   key={item}
                   onClick={() => handleCheckbox(item, selectedCategories, setSelectedCategories)}
-                  className={`px-3 py-1 rounded-full text-sm ${
-                    selectedCategories.includes(item)
+                  className={`px-3 py-1 rounded-full text-sm ${selectedCategories.includes(item)
                       ? "bg-blue-600 text-white"
                       : "bg-gray-200 text-gray-700"
-                  }`}
+                    }`}
                 >
                   {item}
                 </button>
@@ -339,11 +336,10 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
                 <button
                   key={brand}
                   onClick={() => handleCheckbox(brand, selectedBrands, setSelectedBrands)}
-                  className={`px-3 py-1 rounded-full text-sm ${
-                    selectedBrands.includes(brand)
+                  className={`px-3 py-1 rounded-full text-sm ${selectedBrands.includes(brand)
                       ? "bg-blue-600 text-white"
                       : "bg-gray-200 text-gray-700"
-                  }`}
+                    }`}
                 >
                   {brand}
                 </button>
@@ -359,11 +355,10 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
                 <button
                   key={cond}
                   onClick={() => setSelectedCondition(cond)}
-                  className={`px-3 py-1 rounded-full text-sm ${
-                    selectedCondition === cond
+                  className={`px-3 py-1 rounded-full text-sm ${selectedCondition === cond
                       ? "bg-blue-600 text-white"
                       : "bg-gray-200 text-gray-700"
-                  }`}
+                    }`}
                 >
                   {cond}
                 </button>
@@ -379,22 +374,20 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
                 <button
                   key={rating}
                   onClick={() => setSelectedRating(rating)}
-                  className={`px-3 py-1 rounded-full text-sm ${
-                    selectedRating === rating
+                  className={`px-3 py-1 rounded-full text-sm ${selectedRating === rating
                       ? "bg-blue-600 text-white"
                       : "bg-gray-200 text-gray-700"
-                  }`}
+                    }`}
                 >
                   {rating.toFixed(1)}+
                 </button>
               ))}
               <button
                 onClick={() => setSelectedRating(null)}
-                className={`px-3 py-1 rounded-full text-sm ${
-                  selectedRating === null
+                className={`px-3 py-1 rounded-full text-sm ${selectedRating === null
                     ? "bg-blue-600 text-white"
                     : "bg-gray-200 text-gray-700"
-                }`}
+                  }`}
               >
                 Any Rating
               </button>
@@ -438,11 +431,10 @@ const ProductPage = ({ cartItems, addToCart, addToWishList, removeFromCart, rend
                 <button
                   key={i + 1}
                   onClick={() => paginate(i + 1)}
-                  className={`px-3 py-2 rounded-lg text-sm ${
-                    currentPage === i + 1
+                  className={`px-3 py-2 rounded-lg text-sm ${currentPage === i + 1
                       ? "bg-blue-600 text-white shadow-md"
                       : "bg-white border shadow-sm hover:bg-gray-50"
-                  }`}
+                    }`}
                 >
                   {i + 1}
                 </button>

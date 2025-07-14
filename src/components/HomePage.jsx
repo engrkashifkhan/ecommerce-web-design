@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Banner from "../assets/Banner.jpeg";
 import { useNavigate } from 'react-router-dom';
@@ -17,28 +17,28 @@ const HomePage = () => {
   ];
 
   const deals = [
-    { 
-      name: "Smart watch", 
+    {
+      name: "Smart watch",
       discount: "-25%",
       img: "https://tse1.mm.bing.net/th?id=OIP.riCTChIJxQJn2CgpW3EFcAHaHa&pid=Api&P=0&h=220"
     },
-    { 
-      name: "Laptops", 
+    {
+      name: "Laptops",
       discount: "-10%",
       img: "https://tse1.mm.bing.net/th?id=OIP.OUfLKAeiGxUfLE-BszuU0wHaE8&pid=Api&P=0&h=220"
     },
-    { 
-      name: "Headphones", 
+    {
+      name: "Headphones",
       discount: "-25%",
       img: "https://tse1.mm.bing.net/th?id=OIP.In6I5jFGUaOawLWTvy7xzwHaGs&pid=Api&P=0&h=220"
     },
-    { 
-      name: "Canon cameras", 
+    {
+      name: "Canon cameras",
       discount: "-35%",
       img: "https://tse3.mm.bing.net/th?id=OIP.0gFgiG7cqEGv8F0ClJ-DjwHaGZ&pid=Api&P=0&h=220"
     },
-    { 
-      name: "Phones", 
+    {
+      name: "Phones",
       discount: "-15%",
       img: "https://tse1.mm.bing.net/th?id=OIP.GyRmrVfJzkWrJzUnxRZWJAHaF7&pid=Api&P=0&h=220"
     },
@@ -48,26 +48,26 @@ const HomePage = () => {
     {
       title: "Home and outdoor",
       items: [
-        { name: "Sofa",price: "From USD 100", img: "https://tse1.mm.bing.net/th?id=OIP.OUfLKAeiGxUfLE-BszuU0wHaE8&pid=Api&P=0&h=220" },
-        { name: "Chairs",price: "From USD 140", img: "https://tse2.mm.bing.net/th?id=OIP.s-ejrNusut6iszl305qcBwHaHa&pid=Api&P=0&h=220" },
-        { name: "Kitchen mixer",price: "From USD 40", img: "https://tse3.mm.bing.net/th?id=OIP.Wt5Kz_3EYoywb8x8oI0S2QHaHa&pid=Api&P=0&h=220" },
-        { name: "Coffee maker",price: "From USD 340", img: "https://tse3.mm.bing.net/th?id=OIP.5AapZtzO4HbAKp1VPStLGQHaHa&pid=Api&P=0&h=220" },
-        { name: "Sofa",price: "From USD 200", img: "https://tse3.mm.bing.net/th?id=OIP.LiS2fljfwRGesh3j_VgE3AHaHa&pid=Api&P=0&h=220" },
-        { name: "Chairs",price: "From USD 440", img: "https://tse4.mm.bing.net/th?id=OIP.BH3kzTe1vxVTyvIayvwDYgHaHa&pid=Api&P=0&h=220" },
-        { name: "Kitchen mixer",price: "From USD 90", img: "https://tse2.mm.bing.net/th?id=OIP.UtX1NO_CpR-eFWl7VC4gYAHaHa&pid=Api&P=0&h=220" },
-        { name: "Coffee maker",price: "From USD 240", img: "https://tse2.mm.bing.net/th?id=OIP.SCP75RVkSTsXnpK48ZO_TQHaHa&pid=Api&P=0&h=220" },
+        { name: "Sofa", price: "From USD 100", img: "https://tse1.mm.bing.net/th?id=OIP.OUfLKAeiGxUfLE-BszuU0wHaE8&pid=Api&P=0&h=220" },
+        { name: "Chairs", price: "From USD 140", img: "https://tse2.mm.bing.net/th?id=OIP.s-ejrNusut6iszl305qcBwHaHa&pid=Api&P=0&h=220" },
+        { name: "Kitchen mixer", price: "From USD 40", img: "https://tse3.mm.bing.net/th?id=OIP.Wt5Kz_3EYoywb8x8oI0S2QHaHa&pid=Api&P=0&h=220" },
+        { name: "Coffee maker", price: "From USD 340", img: "https://tse3.mm.bing.net/th?id=OIP.5AapZtzO4HbAKp1VPStLGQHaHa&pid=Api&P=0&h=220" },
+        { name: "Sofa", price: "From USD 200", img: "https://tse3.mm.bing.net/th?id=OIP.LiS2fljfwRGesh3j_VgE3AHaHa&pid=Api&P=0&h=220" },
+        { name: "Chairs", price: "From USD 440", img: "https://tse4.mm.bing.net/th?id=OIP.BH3kzTe1vxVTyvIayvwDYgHaHa&pid=Api&P=0&h=220" },
+        { name: "Kitchen mixer", price: "From USD 90", img: "https://tse2.mm.bing.net/th?id=OIP.UtX1NO_CpR-eFWl7VC4gYAHaHa&pid=Api&P=0&h=220" },
+        { name: "Coffee maker", price: "From USD 240", img: "https://tse2.mm.bing.net/th?id=OIP.SCP75RVkSTsXnpK48ZO_TQHaHa&pid=Api&P=0&h=220" },
       ],
     },
     {
       title: "Consumer electronics and gadgets",
       items: [
-        { name: "Smart watches",price: "From USD 100", img: "https://tse1.mm.bing.net/th?id=OIP.riCTChIJxQJn2CgpW3EFcAHaHa&pid=Api&P=0&h=220" },
-        { name: "Camera",price: "From USD 140", img: "https://tse3.mm.bing.net/th?id=OIP.0gFgiG7cqEGv8F0ClJ-DjwHaGZ&pid=Api&P=0&h=220" },
-        { name: "Headphone",price: "From USD 40", img: "https://tse1.mm.bing.net/th?id=OIP.In6I5jFGUaOawLWTvy7xzwHaGs&pid=Api&P=0&h=220" },
+        { name: "Smart watches", price: "From USD 100", img: "https://tse1.mm.bing.net/th?id=OIP.riCTChIJxQJn2CgpW3EFcAHaHa&pid=Api&P=0&h=220" },
+        { name: "Camera", price: "From USD 140", img: "https://tse3.mm.bing.net/th?id=OIP.0gFgiG7cqEGv8F0ClJ-DjwHaGZ&pid=Api&P=0&h=220" },
+        { name: "Headphone", price: "From USD 40", img: "https://tse1.mm.bing.net/th?id=OIP.In6I5jFGUaOawLWTvy7xzwHaGs&pid=Api&P=0&h=220" },
         { name: "Kettle", price: "From USD 340", img: "https://tse4.mm.bing.net/th?id=OIP.yqhbVzAMJp4Xb5epGhbncwHaHa&pid=Api&P=0&h=220" },
-        { name: "Laptops",price: "From USD 200", img: "https://tse1.mm.bing.net/th?id=OIP.GyRmrVfJzkWrJzUnxRZWJAHaF7&pid=Api&P=0&h=220" },
-        { name: "Gaming set",price: "From USD 440", img: "https://tse3.mm.bing.net/th?id=OIP.siv9KJq1idzkEaI1pQfDqwHaFj&pid=Api&P=0&h=220" },
-        { name: "Laptops",price: "From USD 90", img: "https://tse1.mm.bing.net/th?id=OIF.FF6IAm2LlVf3NWOBvvFI6A&pid=Api&P=0&h=220" },
+        { name: "Laptops", price: "From USD 200", img: "https://tse1.mm.bing.net/th?id=OIP.GyRmrVfJzkWrJzUnxRZWJAHaF7&pid=Api&P=0&h=220" },
+        { name: "Gaming set", price: "From USD 440", img: "https://tse3.mm.bing.net/th?id=OIP.siv9KJq1idzkEaI1pQfDqwHaFj&pid=Api&P=0&h=220" },
+        { name: "Laptops", price: "From USD 90", img: "https://tse1.mm.bing.net/th?id=OIF.FF6IAm2LlVf3NWOBvvFI6A&pid=Api&P=0&h=220" },
         { name: "Kettle", price: "From USD 240", img: "https://i5.walmartimages.com/asr/5c847915-ab0d-48a1-b9ab-f495a46e9810_1.c1cc2537e9bcb539fb8ff72910305c28.jpeg" },
       ],
     },
@@ -89,19 +89,19 @@ const HomePage = () => {
   ];
 
   const services = [
-    { 
+    {
       name: "Source from Industry Hubs",
       img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
     },
-    { 
+    {
       name: "Customize Your Products",
       img: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
     },
-    { 
+    {
       name: "Fast shipping by air",
       img: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
     },
-    { 
+    {
       name: "Product inspection",
       img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
     },
@@ -118,12 +118,19 @@ const HomePage = () => {
     { name: "China", flag: "https://flagcdn.com/w40/cn.png", description: "Shopname.ae" },
     { name: "Great Britain", flag: "https://flagcdn.com/w40/gb.png", description: "Shopname.ae" },
   ];
-  
+
   const navigate = useNavigate();
-  
+
   const handleClick = () => {
     navigate('/products');
   };
+
+
+  useEffect(()=> {
+    // Scroll to top on component mount
+    window.scrollTo(0, 0);
+
+  }, [])
 
   // Animation variants
   const containerVariants = {
@@ -166,7 +173,7 @@ const HomePage = () => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="bg-gray-50 px-4 md:px-8 lg:px-12 py-6"
       initial="hidden"
       animate="visible"
@@ -175,15 +182,15 @@ const HomePage = () => {
       {/* Top Section - Enhanced Desktop Layout */}
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Categories Sidebar - Desktop Only */}
-        <motion.div 
+        <motion.div
           className="hidden lg:block w-full lg:w-1/5 bg-white p-5 rounded-xl shadow-lg"
           variants={itemVariants}
         >
           <h3 className="font-bold text-gray-800 text-lg mb-4 pb-2 border-b border-gray-200">Categories</h3>
           <div className="space-y-2">
             {categories.map((cat, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 className="text-gray-700 hover:text-blue-600 cursor-pointer p-2 rounded-lg hover:bg-blue-50 transition-colors"
                 onClick={handleClick}
                 variants={itemVariants}
@@ -197,7 +204,7 @@ const HomePage = () => {
         </motion.div>
 
         {/* Main Banner */}
-        <motion.div 
+        <motion.div
           className="w-full lg:w-3/5 bg-white rounded-2xl shadow-lg overflow-hidden relative"
           variants={fadeIn}
         >
@@ -211,7 +218,7 @@ const HomePage = () => {
             transition={{ duration: 0.8 }}
           />
           <div className="absolute inset-0 flex flex-col items-start justify-center px-6 md:px-10 lg:px-14 z-20">
-            <motion.h4 
+            <motion.h4
               className="text-xl md:text-2xl lg:text-3xl font-semibold text-white mb-2"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -219,7 +226,7 @@ const HomePage = () => {
             >
               Latest trending
             </motion.h4>
-            <motion.h1 
+            <motion.h1
               className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 max-w-md"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -227,8 +234,8 @@ const HomePage = () => {
             >
               Electronic items
             </motion.h1>
-            <motion.button 
-              onClick={handleClick} 
+            <motion.button
+              onClick={handleClick}
               className="bg-white hover:bg-blue-50 text-blue-700 font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-300"
               whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.2)" }}
               whileTap={{ scale: 0.98 }}
@@ -242,7 +249,7 @@ const HomePage = () => {
         </motion.div>
 
         {/* Login Box - Enhanced for Desktop */}
-        <motion.div 
+        <motion.div
           className="w-full lg:w-1/5 bg-white p-5 rounded-2xl shadow-lg flex flex-col gap-5"
           variants={itemVariants}
         >
@@ -256,14 +263,14 @@ const HomePage = () => {
               <p className="text-gray-800 font-medium">Hi, user <br /> let's get started</p>
             </div>
             <div className="flex flex-col gap-2 mt-4">
-              <motion.button 
+              <motion.button
                 className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Join now
               </motion.button>
-              <motion.button 
+              <motion.button
                 className="border-2 border-blue-600 text-blue-600 font-medium py-2.5 px-4 rounded-lg hover:bg-blue-50 transition-colors"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -272,8 +279,8 @@ const HomePage = () => {
               </motion.button>
             </div>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             className="bg-gradient-to-r from-orange-500 to-orange-600 p-4 rounded-xl text-white"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
@@ -281,8 +288,8 @@ const HomePage = () => {
             <h3 className="font-bold text-lg mb-2">Special Offer</h3>
             <p>Get US $10 off <br /> with a new supplier</p>
           </motion.div>
-          
-          <motion.button 
+
+          <motion.button
             className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium py-3 px-4 rounded-lg hover:shadow-lg transition-all"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -294,15 +301,15 @@ const HomePage = () => {
       </div>
 
       {/* Mobile Categories */}
-      <motion.div 
+      <motion.div
         className="lg:hidden mt-6 bg-white p-4 rounded-xl shadow overflow-x-auto"
         variants={itemVariants}
       >
         <h3 className="font-semibold text-gray-700 mb-3">Categories</h3>
         <div className="flex gap-3">
           {categories.map((cat, i) => (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               className="bg-gray-100 px-4 py-2 rounded-xl text-sm whitespace-nowrap cursor-pointer hover:bg-blue-100 transition-colors"
               onClick={handleClick}
               variants={itemVariants}
@@ -315,7 +322,7 @@ const HomePage = () => {
       </motion.div>
 
       {/* Deals & Offers - Enhanced Desktop Layout */}
-      <motion.div 
+      <motion.div
         className="mt-8 bg-white p-5 rounded-2xl shadow-lg border border-gray-100"
         variants={fadeIn}
       >
@@ -331,7 +338,7 @@ const HomePage = () => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-6 items-center">
-          <motion.div 
+          <motion.div
             className="grid grid-cols-4 gap-3 w-full md:w-auto"
             variants={staggerCards}
             initial="hidden"
@@ -355,19 +362,19 @@ const HomePage = () => {
             ))}
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="flex overflow-x-auto pb-4 gap-5 w-full md:grid md:grid-cols-5 md:flex-1"
             variants={staggerCards}
             initial="hidden"
             animate="visible"
           >
             {deals.map((item, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 className="text-center border border-gray-200 rounded-xl p-4 min-w-[150px] hover:shadow-lg transition-shadow"
                 onClick={handleClick}
                 variants={cardAnimation}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.03,
                   boxShadow: "0px 10px 25px rgba(0,0,0,0.1)"
                 }}
@@ -382,12 +389,12 @@ const HomePage = () => {
 
 
                 <div className="bg-gray-100 rounded-xl p-4 mb-3 h-32 flex items-center justify-center">
-  <img
-    src={item.img}
-    alt={item.name}
-    className="w-20 h-20 object-contain"
-  />
-</div>
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="w-20 h-20 object-contain"
+                  />
+                </div>
 
                 <p className="font-medium text-gray-800">{item.name}</p>
                 <p className="text-red-500 font-bold mt-2">{item.discount}</p>
@@ -418,8 +425,8 @@ const HomePage = () => {
               <div className="relative z-10">
                 <h3 className="text-xl font-bold">{section.title}</h3>
               </div>
-              <motion.button 
-                onClick={handleClick} 
+              <motion.button
+                onClick={handleClick}
                 className="relative z-10 mt-4 bg-white text-gray-800 font-medium px-5 py-2.5 rounded-lg hover:bg-gray-100 w-fit"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
@@ -428,7 +435,7 @@ const HomePage = () => {
               </motion.button>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="lg:w-4/5 grid grid-cols-2 md:grid-cols-4 gap-4 p-5"
               variants={staggerCards}
               initial="hidden"
@@ -440,24 +447,24 @@ const HomePage = () => {
                   className="text-center border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all"
                   onClick={handleClick}
                   variants={cardAnimation}
-                  whileHover={{ 
+                  whileHover={{
                     y: -5,
                     boxShadow: "0px 10px 25px rgba(0,0,0,0.1)"
                   }}
                 >
                   <div className="flex items-center justify-between">
-  <div className="text-left">
-    <p className="font-medium text-gray-800">{item.name}</p>
-    <p className="text-gray-500 text-sm mt-1">{item.price}</p>
-  </div>
-  <div className="bg-gray-100 p-2 rounded-lg h-16 w-16 flex items-center justify-center">
-    <img
-      src={item.img}
-      alt={item.name}
-      className="h-12 w-12 object-contain"
-    />
-  </div>
-</div>
+                    <div className="text-left">
+                      <p className="font-medium text-gray-800">{item.name}</p>
+                      <p className="text-gray-500 text-sm mt-1">{item.price}</p>
+                    </div>
+                    <div className="bg-gray-100 p-2 rounded-lg h-16 w-16 flex items-center justify-center">
+                      <img
+                        src={item.img}
+                        alt={item.name}
+                        className="h-12 w-12 object-contain"
+                      />
+                    </div>
+                  </div>
 
                 </motion.div>
               ))}
@@ -467,7 +474,7 @@ const HomePage = () => {
       </div>
 
       {/* Inquiry Banner - Enhanced Desktop Layout */}
-      <motion.div 
+      <motion.div
         className="mt-10 bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-8 rounded-2xl shadow-lg flex flex-col lg:flex-row justify-between gap-8"
         variants={fadeIn}
       >
@@ -479,7 +486,7 @@ const HomePage = () => {
             Simplify your sourcing process with our platform that connects you with verified suppliers worldwide.
           </p>
         </div>
-        <motion.div 
+        <motion.div
           className="lg:w-2/5 bg-white text-black p-6 rounded-2xl shadow-xl"
           whileHover={{ y: -5 }}
           transition={{ type: "spring", stiffness: 300 }}
@@ -508,7 +515,7 @@ const HomePage = () => {
                 <option>Liters</option>
               </select>
             </div>
-            <motion.button 
+            <motion.button
               className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -520,7 +527,7 @@ const HomePage = () => {
       </motion.div>
 
       {/* Recommended Items - Enhanced Desktop Layout */}
-      <motion.div 
+      <motion.div
         className="mt-12"
         variants={fadeIn}
       >
@@ -533,66 +540,66 @@ const HomePage = () => {
             </svg>
           </button>
         </div>
-        
-        <motion.div 
+
+        <motion.div
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
           variants={staggerCards}
           initial="hidden"
           animate="visible"
         >
           {recommendedItems.map((item) => (
-            <motion.div 
-  key={item.id} 
-  className="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition-all"
-  onClick={handleClick}
-  variants={cardAnimation}
-  whileHover={{ 
-    y: -8,
-    boxShadow: "0px 15px 30px rgba(0,0,0,0.12)"
-  }}
->
-  <div className="bg-gray-100 rounded-xl h-36 flex items-center justify-center mb-3">
-    <img 
-      src={item.img} 
-      alt={`Item ${item.id}`} 
-      className="h-28 w-28 object-contain" 
-    />
-  </div>
-  <p className="font-bold text-gray-800">{item.price}</p>
-  <p className="text-gray-600 mt-1 text-sm">{item.description}</p>
-</motion.div>
+            <motion.div
+              key={item.id}
+              className="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition-all"
+              onClick={handleClick}
+              variants={cardAnimation}
+              whileHover={{
+                y: -8,
+                boxShadow: "0px 15px 30px rgba(0,0,0,0.12)"
+              }}
+            >
+              <div className="bg-gray-100 rounded-xl h-36 flex items-center justify-center mb-3">
+                <img
+                  src={item.img}
+                  alt={`Item ${item.id}`}
+                  className="h-28 w-28 object-contain"
+                />
+              </div>
+              <p className="font-bold text-gray-800">{item.price}</p>
+              <p className="text-gray-600 mt-1 text-sm">{item.description}</p>
+            </motion.div>
 
           ))}
         </motion.div>
       </motion.div>
 
       {/* Extra Services - Enhanced Desktop Layout */}
-      <motion.div 
+      <motion.div
         className="mt-14"
         variants={fadeIn}
       >
         <h2 className="font-bold text-2xl md:text-3xl text-center mb-12">Our extra services</h2>
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           variants={staggerCards}
           initial="hidden"
           animate="visible"
         >
           {services.map((service, i) => (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               className="bg-white rounded-2xl shadow overflow-hidden hover:shadow-xl transition-all"
               onClick={handleClick}
               variants={cardAnimation}
-              whileHover={{ 
+              whileHover={{
                 y: -10,
                 boxShadow: "0px 20px 40px rgba(0,0,0,0.15)"
               }}
             >
               <div className="h-48 overflow-hidden">
-                <img 
-                  src={service.img} 
-                  alt={service.name} 
+                <img
+                  src={service.img}
+                  alt={service.name}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -611,20 +618,20 @@ const HomePage = () => {
       </motion.div>
 
       {/* Suppliers by Region - Enhanced Desktop Layout */}
-      <motion.div 
+      <motion.div
         className="mt-14 hidden lg:block"
         variants={fadeIn}
       >
         <h2 className="font-bold text-2xl md:text-3xl text-center mb-10">Suppliers by Region</h2>
-        <motion.div 
+        <motion.div
           className="grid grid-cols-5 gap-6"
           variants={staggerCards}
           initial="hidden"
           animate="visible"
         >
           {regions.map((region, i) => (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               className="bg-white rounded-xl shadow p-4 flex items-center hover:shadow-lg transition-all"
               variants={cardAnimation}
               whileHover={{ scale: 1.03 }}
@@ -646,7 +653,7 @@ const HomePage = () => {
       </motion.div>
 
       {/* Newsletter Subscription - Enhanced Desktop Layout */}
-      <motion.div 
+      <motion.div
         className="mt-14 bg-gradient-to-r from-gray-800 to-gray-900 text-white p-8 md:p-12 rounded-2xl shadow-xl text-center"
         variants={fadeIn}
         whileHover={{ y: -5 }}
@@ -662,7 +669,7 @@ const HomePage = () => {
             placeholder="Your email address"
             className="flex-grow border border-gray-600 bg-gray-700 text-white p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
           />
-          <motion.button 
+          <motion.button
             className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold px-6 py-3 rounded-lg hover:shadow-lg transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}

@@ -92,7 +92,7 @@ const ProfilePage = () => {
       {/* Mobile Menu Button */}
       <div className="md:hidden flex items-center justify-between p-4 bg-white shadow-sm">
         <h2 className="text-xl font-bold text-gray-800">Profile</h2>
-        <button 
+        <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="p-2 rounded-md text-gray-600 hover:text-pink-600 focus:outline-none"
         >
@@ -112,11 +112,10 @@ const ProfilePage = () => {
       <AnimatePresence>
         {notification.show && (
           <motion.div
-            className={`fixed top-4 left-4 right-4 sm:left-auto sm:right-4 px-4 py-2 rounded-md shadow-lg z-[100] max-w-md mx-auto sm:mx-0 ${
-              notification.type === 'success' 
-                ? 'bg-green-500 text-white' 
+            className={`fixed top-4 left-4 right-4 sm:left-auto sm:right-4 px-4 py-2 rounded-md shadow-lg z-[100] max-w-md mx-auto sm:mx-0 ${notification.type === 'success'
+                ? 'bg-green-500 text-white'
                 : 'bg-red-500 text-white'
-            }`}
+              }`}
             variants={notificationVariants}
             initial="hidden"
             animate="visible"
@@ -139,10 +138,9 @@ const ProfilePage = () => {
       </AnimatePresence>
 
       {/* Sidebar - Hidden on mobile when menu is closed */}
-      <div 
-        className={`${
-          isMobileMenuOpen ? 'block' : 'hidden'
-        } md:block w-full md:w-64 bg-white shadow-md z-10`}
+      <div
+        className={`${isMobileMenuOpen ? 'block' : 'hidden'
+          } md:block w-full md:w-64 bg-white shadow-md z-10`}
       >
         <div className="flex flex-col items-center p-4 md:p-6">
           <label htmlFor="avatar-upload" className="cursor-pointer">
@@ -176,11 +174,10 @@ const ProfilePage = () => {
                 setActiveTab(tab);
                 setIsMobileMenuOpen(false);
               }}
-              className={`px-4 py-2 rounded text-sm md:text-base ${
-                activeTab === tab
+              className={`px-4 py-2 rounded text-sm md:text-base ${activeTab === tab
                   ? "bg-pink-100 text-pink-600 font-medium"
                   : "text-gray-700 hover:text-pink-500"
-              }`}
+                }`}
             >
               {tab}
             </button>
@@ -217,11 +214,10 @@ const ProfilePage = () => {
                   onChange={profileFormik.handleChange}
                   onBlur={profileFormik.handleBlur}
                   value={profileFormik.values[name]}
-                  className={`w-full border ${
-                    profileFormik.touched[name] && profileFormik.errors[name]
+                  className={`w-full border ${profileFormik.touched[name] && profileFormik.errors[name]
                       ? "border-red-500"
                       : "border-gray-300"
-                  } mt-1 p-2 rounded focus:outline-none focus:border-pink-500 text-sm sm:text-base`}
+                    } mt-1 p-2 rounded focus:outline-none focus:border-pink-500 text-sm sm:text-base`}
                 />
                 {profileFormik.touched[name] && profileFormik.errors[name] && (
                   <div className="text-red-500 text-xs mt-1">
@@ -242,11 +238,10 @@ const ProfilePage = () => {
                 onBlur={profileFormik.handleBlur}
                 value={profileFormik.values.bio}
                 placeholder="Maximum 200 characters"
-                className={`w-full border ${
-                  profileFormik.touched.bio && profileFormik.errors.bio
+                className={`w-full border ${profileFormik.touched.bio && profileFormik.errors.bio
                     ? "border-red-500"
                     : "border-gray-300"
-                } mt-1 p-2 rounded focus:outline-none focus:border-pink-500 text-sm sm:text-base`}
+                  } mt-1 p-2 rounded focus:outline-none focus:border-pink-500 text-sm sm:text-base`}
                 rows={4}
               />
               <div className="flex justify-between mt-1">
@@ -307,12 +302,11 @@ const ProfilePage = () => {
                     onChange={passwordFormik.handleChange}
                     onBlur={passwordFormik.handleBlur}
                     value={passwordFormik.values[name]}
-                    className={`w-full border ${
-                      passwordFormik.touched[name] &&
-                      passwordFormik.errors[name]
+                    className={`w-full border ${passwordFormik.touched[name] &&
+                        passwordFormik.errors[name]
                         ? "border-red-500"
                         : "border-gray-300"
-                    } mt-1 p-2 rounded focus:outline-none focus:border-pink-500 text-sm sm:text-base`}
+                      } mt-1 p-2 rounded focus:outline-none focus:border-pink-500 text-sm sm:text-base`}
                   />
                   {name === "currentPassword" && (
                     <motion.button

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowLeft } from "react-bootstrap-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
@@ -9,13 +9,20 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
   const [alertMessage, setAlertMessage] = useState("");
   const [selectedImage, setSelectedImage] = useState(0);
 
+
+   useEffect(()=> {
+      // Scroll to top on component mount
+      window.scrollTo(0, 0);
+  
+    }, []);
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         duration: 0.5,
         staggerChildren: 0.1
       }
@@ -92,14 +99,14 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
           <ArrowLeft className="mr-2" />
           Back to products
         </motion.button>
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* LEFT COLUMN: Product Images */}
-          <motion.div 
+          <motion.div
             className="md:col-span-2"
             variants={itemVariants}
           >
@@ -118,18 +125,17 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
                 transition={{ duration: 0.8 }}
               />
             </motion.div>
-            
+
             <div className="overflow-x-auto pb-2">
-              <motion.div 
+              <motion.div
                 className="flex gap-2 w-max min-w-full"
                 variants={containerVariants}
               >
                 {[...Array(5)].map((_, i) => (
-                  <motion.div 
-                    key={i} 
-                    className={`w-14 h-14 sm:w-16 sm:h-16 border rounded cursor-pointer flex-shrink-0 ${
-                      selectedImage === i ? "border-blue-500 border-2" : ""
-                    }`}
+                  <motion.div
+                    key={i}
+                    className={`w-14 h-14 sm:w-16 sm:h-16 border rounded cursor-pointer flex-shrink-0 ${selectedImage === i ? "border-blue-500 border-2" : ""
+                      }`}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     variants={itemVariants}
@@ -147,18 +153,18 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
           </motion.div>
 
           {/* MIDDLE COLUMN: Details */}
-          <motion.div 
+          <motion.div
             className="md:col-span-2 space-y-4 md:space-y-6"
             variants={containerVariants}
           >
-            <motion.h1 
+            <motion.h1
               className="text-xl sm:text-2xl font-semibold text-gray-900"
               variants={itemVariants}
             >
               {product.title}
             </motion.h1>
 
-            <motion.div 
+            <motion.div
               className="flex items-center flex-wrap gap-2 text-sm text-gray-600"
               variants={itemVariants}
             >
@@ -167,7 +173,7 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
               <span>• {product.orders} sold</span>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="space-y-2"
               variants={itemVariants}
             >
@@ -180,7 +186,7 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
               <p className="text-sm text-gray-500">Price is negotiable</p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="text-sm space-y-1"
               variants={itemVariants}
             >
@@ -213,7 +219,7 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
         </motion.div>
 
         {/* TABS */}
-        <motion.div 
+        <motion.div
           className="mt-8 md:mt-12"
           variants={itemVariants}
         >
@@ -221,9 +227,8 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
             {["description", "reviews", "shipping", "about"].map((tab) => (
               <motion.button
                 key={tab}
-                className={`py-2 px-4 text-sm font-medium capitalize flex-shrink-0 ${
-                  activeTab === tab ? "border-b-2 border-blue-500 text-blue-600" : "text-gray-600"
-                }`}
+                className={`py-2 px-4 text-sm font-medium capitalize flex-shrink-0 ${activeTab === tab ? "border-b-2 border-blue-500 text-blue-600" : "text-gray-600"
+                  }`}
                 onClick={() => setActiveTab(tab)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -374,7 +379,7 @@ const ProductDetail = ({ product, onBack, addToCart, addToWishList, renderStars 
           </AnimatePresence>
         </motion.div>
       </div>
-      
+
       {/* Custom styles for hiding scrollbar */}
       <style jsx>{`
         .hide-scrollbar::-webkit-scrollbar {

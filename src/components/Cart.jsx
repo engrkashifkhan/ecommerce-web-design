@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { ArrowLeft } from "react-bootstrap-icons";
 import { motion, AnimatePresence } from "framer-motion";
 
-const CartView = ({ 
-  cartItems, 
-  removeFromCart, 
+const CartView = ({
+  cartItems,
+  removeFromCart,
   addToWishList,
-  onClose, 
+  onClose,
   onCheckout,
 }) => {
   const [items, setItems] = useState([]);
@@ -38,7 +38,7 @@ const CartView = ({
     addToWishList(item);
     removeFromCart(item.id);
     showNotification(`${item.title} moved to wishlist!`, 'success');
-    
+
     // Remove from local state immediately
     setItems(prevItems => prevItems.filter(i => i.id !== item.id));
   };
@@ -55,21 +55,21 @@ const CartView = ({
   // Animation variants
   const container = {
     hidden: { x: '100%' },
-    visible: { 
+    visible: {
       x: 0,
-      transition: { 
-        type: 'spring', 
-        damping: 25, 
+      transition: {
+        type: 'spring',
+        damping: 25,
         stiffness: 300,
         when: "beforeChildren"
       }
     },
-    exit: { 
+    exit: {
       x: '100%',
-      transition: { 
+      transition: {
         duration: 0.3,
         ease: "easeInOut"
-      } 
+      }
     }
   };
 
@@ -78,16 +78,16 @@ const CartView = ({
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         delay: i * 0.05,
-        type: "spring", 
-        stiffness: 200 
+        type: "spring",
+        stiffness: 200
       }
     }),
-    exit: { 
-      opacity: 0, 
+    exit: {
+      opacity: 0,
       x: 50,
-      transition: { duration: 0.2 } 
+      transition: { duration: 0.2 }
     }
   };
 
@@ -99,13 +99,13 @@ const CartView = ({
 
   const summaryAnimation = {
     hidden: { scaleY: 0, opacity: 0 },
-    visible: { 
-      scaleY: 1, 
+    visible: {
+      scaleY: 1,
       opacity: 1,
-      transition: { 
+      transition: {
         delay: 0.2,
-        type: "spring", 
-        stiffness: 300 
+        type: "spring",
+        stiffness: 300
       }
     }
   };
@@ -116,11 +116,10 @@ const CartView = ({
       <AnimatePresence>
         {notification.show && (
           <motion.div
-            className={`fixed top-4 left-1/2 transform -translate-x-1/2 sm:left-auto sm:transform-none sm:right-4 px-4 py-2 rounded-md shadow-lg z-[100] max-w-[90vw] ${
-              notification.type === 'success' 
-                ? 'bg-green-500 text-white' 
-                : 'bg-red-500 text-white'
-            }`}
+            className={`fixed top-4 left-1/2 transform -translate-x-1/2 sm:left-auto sm:transform-none sm:right-4 px-4 py-2 rounded-md shadow-lg z-[100] max-w-[90vw] ${notification.type === 'success'
+              ? 'bg-green-500 text-white'
+              : 'bg-red-500 text-white'
+              }`}
             variants={notificationVariants}
             initial="hidden"
             animate="visible"
@@ -161,7 +160,7 @@ const CartView = ({
         </motion.button>
 
         {/* Title */}
-        <motion.h2 
+        <motion.h2
           className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -174,7 +173,7 @@ const CartView = ({
           {/* Left: Cart Items - Full width on mobile, 2/3 on desktop */}
           <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {items.length === 0 ? (
-              <motion.div 
+              <motion.div
                 className="text-center py-6 sm:py-10"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -207,9 +206,9 @@ const CartView = ({
                         animate="visible"
                         exit="exit"
                         layout
-                        whileHover={{ 
+                        whileHover={{
                           backgroundColor: "rgba(249, 250, 251, 1)",
-                          transition: { duration: 0.2 } 
+                          transition: { duration: 0.2 }
                         }}
                       >
                         <div className="flex gap-3 sm:gap-4">
@@ -242,7 +241,7 @@ const CartView = ({
                               >
                                 Remove
                               </motion.button>
-                              <motion.button 
+                              <motion.button
                                 onClick={() => moveToWishlist(item)}
                                 className="text-blue-500 hover:text-blue-700"
                                 whileHover={{ scale: 1.1 }}
@@ -299,7 +298,7 @@ const CartView = ({
           {/* Right: Order Summary - Full width on mobile, 1/3 on desktop */}
           {items.length > 0 && (
             <AnimatePresence>
-              <motion.div 
+              <motion.div
                 className="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-sm lg:col-span-1 mt-4 sm:mt-0"
                 variants={summaryAnimation}
                 initial="hidden"
@@ -312,12 +311,12 @@ const CartView = ({
                       type="text"
                       className="w-full border px-3 py-2 text-xs sm:text-sm rounded"
                       placeholder="Add coupon"
-                      whileFocus={{ 
+                      whileFocus={{
                         borderColor: "#3b82f6",
                         boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.3)"
                       }}
                     />
-                    <motion.button 
+                    <motion.button
                       className="bg-blue-600 text-white px-3 sm:px-4 rounded text-xs sm:text-sm hover:bg-blue-700"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -332,7 +331,7 @@ const CartView = ({
                     <span>Subtotal:</span>
                     <span>${subtotal.toFixed(2)}</span>
                   </div>
-                  <motion.div 
+                  <motion.div
                     className="flex justify-between text-green-600"
                     initial={{ x: -20 }}
                     animate={{ x: 0 }}
@@ -341,7 +340,7 @@ const CartView = ({
                     <span>Discount:</span>
                     <span>- ${discount.toFixed(2)}</span>
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="flex justify-between text-blue-600"
                     initial={{ x: -20 }}
                     animate={{ x: 0 }}
@@ -350,7 +349,7 @@ const CartView = ({
                     <span>Tax:</span>
                     <span>+ ${tax.toFixed(2)}</span>
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     className="flex justify-between border-t pt-3 text-sm sm:text-base font-semibold"
                     initial={{ scale: 0.9 }}
                     animate={{ scale: 1 }}
@@ -364,7 +363,7 @@ const CartView = ({
                 <motion.button
                   onClick={onCheckout}
                   className="mt-4 sm:mt-6 w-full bg-green-500 hover:bg-green-600 text-white py-2 sm:py-3 rounded font-semibold text-sm sm:text-base"
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.02,
                     boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
                   }}
@@ -373,7 +372,7 @@ const CartView = ({
                   Checkout
                 </motion.button>
 
-                <motion.div 
+                <motion.div
                   className="flex justify-center gap-3 mt-3 sm:mt-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -407,7 +406,7 @@ const CartView = ({
 
         {/* Footer - Responsive grid */}
         {items.length > 0 && (
-          <motion.div 
+          <motion.div
             className="mt-6 sm:mt-8 border-t py-3 bg-gray-200"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -419,7 +418,7 @@ const CartView = ({
                 { icon: "📞", title: "Customer support", desc: "24/7 assistance available" },
                 { icon: "🚚", title: "Free delivery", desc: "On all orders above $50" }
               ].map((feature, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
                   className="flex flex-col items-center gap-1 sm:gap-2 py-2 sm:py-0"
                   initial={{ opacity: 0, y: 20 }}
